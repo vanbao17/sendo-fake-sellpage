@@ -1,0 +1,139 @@
+.wrapper {
+    width: 264px;
+    height: 100%;
+    padding: 24px 16px;
+    background-color: #fff;
+    transition: 0.25s;
+    position: relative;
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.wrapper.minimenu {
+    width: 0;
+    &:hover {
+        width: 264px;
+        height: 100%;
+        position: absolute;
+        box-shadow: 0 0.8rem 1.6rem 0 rgba(0,0,0,.1);
+    }
+}
+.wrapperDropbox {
+    .title {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #3f4b53;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .title:hover {
+        background-color: #f2f3f4;
+    }
+    .title span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .title.active {
+        color: red;
+    }
+    .dropdown {
+        margin: 0px;
+    }
+    .dropdown li {
+        padding: 12px;
+        margin-left: 24px;
+        cursor: pointer;
+    }
+    .dropdown li:hover {
+        background-color: #f2f3f4;
+    }
+}
+h3 {
+    margin: 24px 0px 12px;
+}
+.icon {
+    font-size: 23px;
+}
+.infor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .nameShop  {
+        display: flex;
+        flex-direction: column;
+        color: #3f4b53;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .nameShop span:nth-child(2){
+        min-height: 15px
+    }
+}
+.raito {
+    padding: 0;
+    margin-left: -12px;
+    margin-top: 24px;
+    margin-right: -12px;
+    li {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #3f4b53;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    .red {
+        color: red; 
+    }
+    .green {
+        color: #55ba78;
+    }
+}
+.wranning {
+    background-color: #fdede2;
+    color: #ee6c0e;
+    padding: 16px;
+    margin: 8px -4px;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+.extenionsSendo {
+    .listExten {
+        width: 100%;
+    }
+    .listExten img {
+        width: 100%;
+        height: auto;
+        padding: 6px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}
+.iconHideSide {
+    position: absolute;
+    top: 32px;
+    left: 248px;
+    padding: 8px;
+    background-color: #e7e8ea;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 0.8rem 1.6rem 0 rgba(0,0,0,.1);
+    }
+}
+.icon-hide.iconminimenu {
+    position: absolute;
+    top: 32px;
+    transform: translateX(-250px);
+}
