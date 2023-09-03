@@ -27,3 +27,7 @@ html *::-webkit-scrollbar-track {
     display: flex;
     background-color: #f1f2f3;
 }
+.content {
+    width:calc(100% - 264px);
+    position: relative;
+}

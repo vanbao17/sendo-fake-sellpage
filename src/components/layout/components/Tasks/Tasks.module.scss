@@ -1,0 +1,96 @@
+.wrapper {
+    width: 100%;
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.wrapper .title {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .left,.right{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .left span {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0f1e29;
+    }
+    .left  .icon {
+        color: #ee2624;
+    } 
+    .right .progress .down {
+        width: 200px;
+        height: 10px;
+        background-color: #f1f2f3;
+        border-radius: 6px;
+    }
+    .icon-chervonup .icon {
+        width: 12px;
+        height: 12px;
+        padding: 6px;
+        border-radius: 4px;
+        background-color: #f1f2f3;
+        cursor: pointer;
+        &:hover {
+            background-color: #f2f3f4;
+        }
+    }
+}
+.list-itemTask {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+.wrapperItem {
+    width: 20%;
+    height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 12px ;
+    border: unset;
+    border-radius: 4px;
+    box-shadow: 0 -2px 8px 0 rgba(0,0,0,.1), 0 4px 8px 0 rgba(0,0,0,.1);
+    img {
+        width: 100%;
+        height: auto;
+    }
+    .title {
+        font-size: 14px;
+        color: #3f4b53;
+        font-weight: 700;
+        margin: 12px 0px 8px;
+        padding: 0;
+        text-align: center;
+        display: block;
+    }
+    .description {
+        font-size: 12px;
+        color: #6f787e;
+        font-weight: 400;
+        text-align: center;
+    }
+    .action {
+        margin-top: 12px;
+        width: 100%;
+        text-align: center;
+    }
+    .action a {
+        padding: 5px 8px;
+        color: #3f4b53;
+        background-color: #e7e8ea;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 700;
+        transition: background .25s ease,color .25s ease;
+    }
+}

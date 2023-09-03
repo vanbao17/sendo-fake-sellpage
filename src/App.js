@@ -1,12 +1,13 @@
-import Log from "./components/layout/Log/Log";
+import Log from "./components/Pages/Log/Log";
 import { Route,Routes,BrowserRouter as Router } from "react-router-dom";
 import Defaultlaytout from "../src/components/layout/DeafaultLayout/Defaultlaytout"
+import Newfeeds from "./components/Pages/Newfeeds/Newfeeds";
 function App() {
   return (
     <Router>
       <div className="App">
         <Defaultlaytout >
-          bangr tin
+          <Newfeeds />
         </Defaultlaytout>
       </div>
     </Router>

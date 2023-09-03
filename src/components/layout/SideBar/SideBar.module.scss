@@ -1,10 +1,15 @@
-.wrapper {
+.container {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+.normal {
     width: 264px;
     height: 100%;
     padding: 24px 16px;
     background-color: #fff;
     transition: 0.25s;
-    position: relative;
+    position: relative ;
 }
 .container {
     width: 100%;
@@ -13,12 +18,21 @@
 }
 .wrapper.minimenu {
     width: 0;
-    &:hover {
-        width: 264px;
-        height: 100%;
-        position: absolute;
-        box-shadow: 0 0.8rem 1.6rem 0 rgba(0,0,0,.1);
-    }
+    height: 100%;
+    padding: 24px 16px;
+    background-color: #fff;
+    transition: 0.25s;
+    position: relative ;
+}
+.wrapper.minimenu:hover{
+    width: 264px;
+    height: 100%;
+    position: absolute;
+    box-shadow: 0 0.8rem 1.6rem 0 rgba(0,0,0,.1);
+}
+.wrapper.minimenu:hover .iconShowSide {
+    top: 32px;
+    left: 248px;
 }
 .wrapperDropbox {
     .title {
@@ -121,19 +135,21 @@ h3 {
     }
 }
 .iconHideSide {
-    position: absolute;
     top: 32px;
     left: 248px;
+}
+.iconHide {
+    position: absolute;
     padding: 8px;
     background-color: #e7e8ea;
     border-radius: 4px;
+    transition: 0.25s;
     cursor: pointer;
     &:hover {
         box-shadow: 0 0.8rem 1.6rem 0 rgba(0,0,0,.1);
     }
 }
-.icon-hide.iconminimenu {
-    position: absolute;
+.iconShowSide {
     top: 32px;
-    transform: translateX(-250px);
+    left: 16px;
 }

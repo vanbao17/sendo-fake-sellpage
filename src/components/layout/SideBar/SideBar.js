@@ -3,11 +3,15 @@ import styles from "./SideBar.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight, faChevronDown, faCircleQuestion, faClipboard, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import DropBox from "./DropBox";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { Context } from "../../../store/Context";
 const cx = classNames.bind(styles)
 function SideBar() {
-    const [hidemenu,sethidemenu]=useState(false)
-    return  <div className={cx("wrapper",hidemenu==true?"minimenu":"")}>
+    const {hidemenu,sethidemenu}= useContext(Context)
+    const {icon,seticon}= useContext(Context)
+    return  <div className={cx("wrapper",hidemenu==true?"minimenu":"normal")} 
+        onMouseMove={()=>{seticon(icon)}} onMouseLeave={()=>{seticon(!icon)}}
+    >
             <div className={cx("container")}>
                 <div className={cx("infor")}>
                     <img src="https://media3.scdn.vn/img4/2020/10_21/MjjPQD0ovblQdwDzS6t0.png"></img>
@@ -59,11 +63,11 @@ function SideBar() {
                     </div>
                 </div>
             </div>
-            <div className={cx('icon-hide',hidemenu==true?"iconminimenu":"")} onClick={()=>{sethidemenu(!hidemenu)}}>:
+            <div className={cx(hidemenu==true?"iconminimenu":"icon-hide")} onClick={()=>{sethidemenu(!hidemenu);seticon(!icon)}}>:
                 {
-                hidemenu==false?
-                <FontAwesomeIcon className={cx("iconHideSide")} icon={faArrowLeft}/>
-                :<FontAwesomeIcon className={cx("iconHideSide")} icon={faArrowRight}/>
+                hidemenu==false?//nếu hidêmnu đang tắt thì nó hiện iconleft ngược lại thì right
+                <FontAwesomeIcon className={cx("iconHideSide",'iconHide')} icon={faArrowLeft}/>
+                :<FontAwesomeIcon className={cx("iconShowSide","iconHide")} icon={faArrowRight}/>
                 }
             </div>
         </div>
