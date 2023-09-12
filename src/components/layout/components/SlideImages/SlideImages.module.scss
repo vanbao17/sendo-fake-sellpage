@@ -1,0 +1,116 @@
+.wrapper {
+    width: 100%;
+    min-height: 40rem;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 24px;
+    overflow: hidden;
+}
+.containerSlide {
+    width: 100%;
+    height: 35rem;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    .ItemSlide {
+        display: flex;
+        flex-shrink: 0;
+        width: 100%;
+        transition: 0.25s;
+    }
+    .ItemSlide a {
+        width: 100%;
+    }
+    .active {
+        transform: translateX(0);
+        z-index: 9;
+        position: absolute;
+    }
+    .next {
+        transform: translateX(-100%);
+        position: absolute;
+        z-index: 8;
+    }
+    .prev {
+        transform: translateX(100%);
+        position: absolute;
+        z-index: 6;
+    }
+    .duplicateprev {
+        transform: translateX(200%);
+        position: absolute;
+        z-index: 5;
+    }
+    .duplicatenext {
+        transform: translateX(-200%);
+        position: absolute;
+        z-index: 4;
+    }
+    .dupduplicateprev {
+        transform: translateX(300%);
+        position: absolute;
+        z-index: 4;
+    }
+    .dupduplicatenext {
+        transform: translateX(-300%);
+        position: absolute;
+        z-index: 3;
+    }
+    .dupdupduplicateprev {
+        transform: translateX(400%);
+        position: absolute;
+        z-index: 3;
+    }
+    .dupdupduplicatenext {
+        transform: translateX(-400%);
+        position: absolute;
+        z-index: 3;
+    }
+}
+img {
+    width: 100%;
+    border-radius: 8px;
+}
+.title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+    span {
+        font-weight: 700;
+        font-size: 16px;
+        color: #0f1e29;
+    }
+    .icon {
+        width: 12px;
+        height: 12px;
+        color: #ee2624;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #ee2624;
+        border-radius: 50px;
+    }
+}
+.pagination {
+    width: 100%;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #CCCCCC;
+        transition: 0.25s
+    }
+    span.active {
+        width: 30px;
+        background-color: #ee2624;
+        border-radius: 5px;
+    }
+}

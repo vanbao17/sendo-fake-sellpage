@@ -1,0 +1,136 @@
+.wrapper {
+    background-color: #fff;
+    padding: 12px;
+    margin-top: 24px;
+    border-radius: 8px;
+}
+.titleLeft {
+    width: 58%;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    .iconTitle {
+        color: red;
+    }
+}
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.titleRight {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 42%;
+    .note {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 12px;
+    }
+    .note .colorNote {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+        margin-left: 15px;
+    }
+    .red {
+        background-color: red;
+    }
+    .green {
+        background-color: green ;
+    }
+    .note div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+table {
+    width: 100%;
+    th {
+        padding: 16px 8px;
+        background-color: #fafafa;
+        font-size: 12px;
+        border: 1px solid #e7e8ea;
+    }
+    td {
+        border: 1px solid #e7e8ea;
+        padding: 16px 24px;
+        text-align: center;
+        font-size: 14px;
+        margin: 0;
+    }
+    .row:hover {
+        background-color: #e7e8ea;
+        cursor: pointer;
+    }
+    .row:hover>td:nth-child(1) {
+        color: #0f62fe;
+    }
+    .row>td:nth-child(2) {
+        font-weight: 700;
+    }
+    .row .red {
+        color: #ee6c0e;
+        font-weight: 700;
+    }
+    .row .green {
+        color: #55ba78;
+        font-weight: 700;
+    }
+    .row .otherColor {
+        color: #6f787e;
+        font-weight: 700;
+    }
+    .row>td:nth-child(1) {
+        text-align: left;
+    }
+}
+.inputDate {
+    padding: 6px 8px;
+    font-size: 12px;
+    color: #3f4b53;
+    border: 1px solid #cfd2d4;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 4px;
+    &:hover {
+        border-color:#3f81fe;;
+    }
+    .valueDate {
+        user-select: none;
+    }
+    .react-calendar {
+        border: none;
+        outline: none;
+    }
+}
+.btnCalendar {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #fff;
+    .returnBtn,.exitBtn {
+        margin-right: 80px;
+        padding: 6px 8px;
+    }
+    .apply {
+        padding: 6px 8px;
+        background-color: #ee2624;
+        color: #fff;
+    }
+    button { 
+        border-radius: 4px;
+    }
+
+}
+.containerCalendar {
+    box-shadow: 0 -4px 16px 0 rgba(0,0,0,.1), 0 8px 16px 0 rgba(0,0,0,.1);
+    border-radius: 8px;
+    z-index: 9;
+}

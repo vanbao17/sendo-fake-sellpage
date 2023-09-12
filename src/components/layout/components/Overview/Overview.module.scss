@@ -1,9 +1,16 @@
 .wrapper {
     width: 100%;
-    display: flex;
+}
+.wrapper::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.wrapper>div {
+    float: left;
 }
 .container-left {
-    width: 68.666667%;
+    width:66%;
     padding: 24px;
     background-color: #fff;
     border-radius: 8px;
@@ -89,7 +96,7 @@
     }
 }
 .container-right {
-    width: calc(100%*1/3);
+    width: 32%;
     margin-left: 24px;
     background-color: #fff;
     padding: 24px;

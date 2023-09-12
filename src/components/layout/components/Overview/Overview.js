@@ -3,6 +3,7 @@ import styles from "./Overview.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faChevronRight, faCircle, faCircleQuestion, faMinus, faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import ItemOverview from "./ItemOverview";
+import SlidePosts from "../SlidePosts/SlidePosts";
 const cx = classNames.bind(styles)
 function Overview() {
     return <div className={cx("wrapper")}>
@@ -29,6 +30,7 @@ function Overview() {
                 <span><FontAwesomeIcon className={cx("icon")} icon={faNewspaper}/>Góc tin hỗ trợ</span>
                 <a href="#"><span>Xem tất cả</span></a>
             </div>
+            <SlidePosts />
         </div>
     </div>;
 }
