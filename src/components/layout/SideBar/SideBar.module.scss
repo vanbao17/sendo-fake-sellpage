@@ -1,14 +1,15 @@
+
+
 .container {
     position: sticky;
     position: -webkit-sticky;
-    top: 0;
+    top: 50px;
     width: 100%;
     height: 100vh;
     overflow: hidden;
 }
 .normal {
     width: 264px;
-    height: 100%;
     padding: 24px 16px;
     background-color: #fff;
     transition: 0.25s;
