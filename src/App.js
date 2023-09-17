@@ -7,9 +7,9 @@ function App() {
   return (
     <Router>
       <div className="App">
-          <TypeShop notNav={true}/>
-        {/* <Defaultlaytout >
-        </Defaultlaytout> */}
+        <Defaultlaytout >
+          <Newfeeds />
+        </Defaultlaytout>
       </div>
     </Router>
   );
