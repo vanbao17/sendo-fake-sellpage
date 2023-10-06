@@ -4,9 +4,9 @@ import TippyHeadless from '@tippyjs/react/headless';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown,faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown,faCircleQuestion, faUser } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles)
-function ItemNav({title,icon,dropchildren}) {
+function ItemNav({title,icon,dropchildren,user}) {
     const [showTippy, setshowTippy] = useState(false);
     return ( 
         <TippyHeadless
@@ -24,7 +24,9 @@ function ItemNav({title,icon,dropchildren}) {
             <a className={cx("item-menu",showTippy==true?'active':"")} onClick={()=>{setshowTippy(!showTippy)}}>
                 {icon}
                 <span>{title}</span>
-                <FontAwesomeIcon className={cx('icon')} icon={faChevronDown} rotation={showTippy==true?180:0}/>
+                {user?<></>:
+                    <FontAwesomeIcon className={cx('icon')} icon={faChevronDown} rotation={showTippy==true?180:0}/>
+                }
             </a>
         </TippyHeadless>
     );

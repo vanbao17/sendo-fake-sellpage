@@ -12,7 +12,6 @@ function Provider({children}) {
             else {
                 setmenufix(false)
             }
-            console.log(document.documentElement.scrollTop);
         }
         window.addEventListener('scroll',fixedMenu)
         return () => {

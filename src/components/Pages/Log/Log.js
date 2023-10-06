@@ -5,6 +5,7 @@ import SigninForm from "./SigninForm";
 import LoginForm from "./LoginForm";
 const cx = classNames.bind(styles)
 function Log() {
+    console.log(123);
     const [showLog,setshowLog] = useState(true)
     return <div className={cx("wrapper")}>
         <div className={cx("header")}>

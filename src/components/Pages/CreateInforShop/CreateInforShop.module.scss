@@ -1,0 +1,66 @@
+
+.container {
+    max-width: 67.333333%;
+    margin: 0px auto;
+    padding: 24px 0px 88px 0px;
+}
+.content {
+    border-radius: 8px;
+    border: 1px solid #fbcbcb;
+    max-width: 93.3333333333%;
+    margin: 0px auto;
+    padding: 32px 0px ;
+    .titlePage {
+        font-size: 20px;
+    }
+    .descPage {
+        font-size: 16px;
+        color: #3f4b53;
+    }
+    .titlePage,.descPage {
+        padding: 5px 36px;
+        font-weight: 700;
+    }
+}
+.lineSpace {
+    padding: 12px 36px;
+    hr {
+        background-color: #e7e8ea;
+        height: 1px;
+        color: #0f1e29;
+        border: none;
+    }
+}
+.action {
+    width: 100%;
+    padding: 8px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    span a {
+        color: #0f62fe;
+    }
+    
+}
+.btn-sendInfor {
+    width: 33.3333333333%;
+    button {
+        width: 100%;
+        padding: 13px 16px;
+        background-color: #ee2624;
+        border-radius: 4px;
+    }
+    span {
+        width: 100%;
+        display: block;
+        text-align: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+    }
+}

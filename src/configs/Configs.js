@@ -1,5 +1,7 @@
 const routes = {
-    home:"",
+    login:"/login",
+    taoshop:"/tao-shop",
+    taoinforshop:"/inforshop",
     bangtin:"/bang-tin",
     shopuytin:"/shop-uy-tin",
     lienhe:{

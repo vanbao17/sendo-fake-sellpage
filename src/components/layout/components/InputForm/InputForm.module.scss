@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    width: 100%;
+    position: relative;
+}
+label {
+    margin-bottom: 8px;
+}
+.noneAction {
+    background-color: #e7e8ea;
+    border: none;
+    border-color: #cfd2d4;
+    &:focus {
+        box-shadow: none;
+    }
+}
+.inputTippy {
+    position: relative;
+    input {
+        width: 100%;
+    }
+    .icon {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%,-50%);
+    }
+}
+.containerTippy {
+    width: 97%;
+    background-color: #fff;
+    margin: 0px auto;
+    box-shadow: 0 -4px 16px 0 rgba(0,0,0,.1), 0 8px 16px 0 rgba(0,0,0,.1);
+    border-radius: 4px;
+    li {
+        padding: 12px;
+        line-height: 24px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    li:hover {
+        background-color: #f2f3f4;
+    }
+    input {
+        cursor: pointer;
+    }
+}
+[data-tippy-root] {
+    width: 100%;
+}

@@ -1,54 +1,74 @@
 import Config from "../configs/Configs"
-import Trend from "../components/layout/components/News/Trend"
-import Events from "../components/layout/components/News/Events"
-import Notification from "../components/layout/components/News/Notification"
-import ContactSendo from "../components/layout/components/Contact/ContactSendo"
-import ContactShiper from "../components/layout/components/Contact/ContactShiper"
-import Feature from "../components/layout/components/Guide/Feature"
-import Experience from "../components/layout/components/Guide/Experience"
-import Profile from "../components/layout/components/Profile/Profile"
-import Policy from "../components/layout/components/Policy/Policy"
-import Shop from "../components/layout/components/Shop/Shop"
+import ContactSendo from "../components/Pages/Contact/ContactSendo"
+import ContactShiper from "../components/Pages/Contact/ContactShiper"
+import Shop from "../components/Pages/Shop/Shop"
+import Log from "../components/Pages/Log/Log"
+import Newfeeds from "../components/Pages/Newfeeds/Newfeeds"
+import Events from "../components/Pages/News/Events"
+import Notification from "../components/Pages/News/Notification"
+import Trend from "../components/Pages/News/Trend"
+import Policy from "../components/Pages/Policy/Policy"
+import HeaderNoneCate from "../components/layout/Header/HeaderNoneCate"
+import CreateInforShop from "../components/Pages/CreateInforShop/CreateInforShop"
+import TypeShop from "../components/Pages/TypeShop/TypeShop"
 const publicRoutes = [
     {
+        path:Config.login,
+        component:Log,
+        layout:HeaderNoneCate,
+        posittion:true,
+    },
+    {
+        path:Config.taoshop,
+        component:TypeShop,
+        layout:HeaderNoneCate,
+        posittion:true,
+    },
+    {
+        path:Config.taoinforshop,
+        component:CreateInforShop,
+        layout:HeaderNoneCate,
+        posittion:true,
+    },
+    {
         path:Config.bangtin,
-        conponent:News
+        component:Newfeeds
     },
     {
         path:Config.lienhe.lienhesendo,
-        conponent:ContactSendo
+        component:ContactSendo
     },
     {
         path:Config.lienhe.nhavanchuyen,
-        conponent:ContactShiper
+        component:ContactShiper
     },
     {
         path:Config.shopuytin,
-        conponent:Shop
+        component:Shop
     },
-    {
-        path:Config.huongdan.chiasekinhnghiem,
-        conponent:Experience 
-    },
-    {
-        path:Config.huongdan.huongdantinhnang, 
-        conponent:Feature
-    },
+    // {
+    //     path:Config.huongdan.chiasekinhnghiem,
+    //     component:Experience 
+    // },
+    // {
+    //     path:Config.huongdan.huongdantinhnang, 
+    //     component:Feature
+    // },
     {
         path:Config.tintuc.sukien, 
-        conponent:Events
+        component:Events
     },
     {
         path:Config.tintuc.thongbao, 
-        conponent:Notification             
+        component:Notification             
     }, 
     {
         path:Config.tintuc.xuhuong,
-        conponent:Trend
+        component:Trend
     },
     {
         path:Config.chinhsach,
-        conponent:Policy
+        component:Policy
     }
 ]
 export default publicRoutes

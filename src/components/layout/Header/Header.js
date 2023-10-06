@@ -11,7 +11,6 @@ const cx = classNames.bind(styles)
 
 function Header({notNav}) {
     const {menufix,setmenufix} = useContext(Context)
-    console.log(menufix);
     return <div className={cx('wrapper')}>
         <div className={cx("nav-container-image")}>
             <a href="#" className={cx("image-nav")}>
@@ -22,7 +21,7 @@ function Header({notNav}) {
             <div className={cx("logo")}>
                 <img src="https://accgroup.vn/wp-content/uploads/2022/11/q5bS5n.jpg"></img>
             </div>
-            {notNav!=true?<ul>
+            <ul>
                 <li className={cx("dropbox")}>
                     <div className={cx('menu-item')}>
                         <ItemNav 
@@ -78,18 +77,18 @@ function Header({notNav}) {
                         <Link to="/" className={cx("item-menu")}><FontAwesomeIcon className={cx('icon')} icon={faBell}/></Link>
                     </div>
                 </li>
-                <li>
+                <li className={cx("dropbox")}>
                     <div className={cx('menu-item')}>
-                        <Link to="/" className={cx("item-menu")}><FontAwesomeIcon className={cx('icon')} icon={faUser}/></Link>
+                        <ItemNav user dropchildren={
+                            [
+                                {path:"/shop#Event/News_Notify",name:"Tài khoản"},
+                                {path:"/shop#Event/News_Notify",name:"Thông tin tài khoản"},
+                                {path:"/shop#Event/News_Event",name:"Đổi mật khẩu"},
+                                {path:"/shop#Event/News_Notify",name:"Thoát"},]
+                        } to="/" icon={ <FontAwesomeIcon className={cx('icon')} icon={faUser}/>} className={cx("item-menu")}></ItemNav>
                     </div>
                 </li>
             </ul>
-            :<div className={cx("toLoginPage")}>
-                <a href="#">
-                    <FontAwesomeIcon className={cx("icon")} icon={faCircleUser}/>
-                    <span>Bạn đã có tài khoản? Đăng nhập ngay</span>
-                </a>
-            </div>}
         </nav>
     </div>;
 }

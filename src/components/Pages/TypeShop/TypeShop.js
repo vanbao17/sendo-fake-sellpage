@@ -4,9 +4,14 @@ import Header from "../../layout/Header/Header";
 import Footer from "../../layout/Footer/Footer";
 import logo from "../../../Assets/Logo";
 import ItemTick from "./ItemTick";
+import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 const cx = classNames.bind(styles)
 
 function TypeShop() {
+    const navigate = useNavigate();
+    const valueSendo = 'sendo'
+    const valueSenmail = 'senmail'
     return (
         <div className={cx("wrapper")}>
             <Header notNav/>
@@ -43,7 +48,9 @@ function TypeShop() {
                         </tr>
                         <tr>
                             <td>
-                                <p>Miễn phí mở Shop</p>
+                                <p>
+                                    Yêu cầu giấy tờ
+                                </p>
                                 <span>Giấy phép kinh doanh và chứng từ thương hiệu, ngành hàng</span>
                             </td>
                             <td><ItemTick type={false}/></td>
@@ -64,7 +71,7 @@ function TypeShop() {
                         </tr>
                         <tr>
                             <td>
-                                <p>Cấp độ</p>
+                                <p>Quyền lợi hiển thị</p>
                             </td>
                             <td>
                                 <strong>Shop Thường</strong>    
@@ -73,6 +80,76 @@ function TypeShop() {
                             <td>
                                 <strong>Shop Thường</strong>    
                                 <strong>Shop Uy Tín</strong>     
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Ưu tiên xuất hiện ở trang tìm kiếm</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>   
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>      
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Huy hiệu chứng nhận Shop</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>     
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Bộ lọc sản phẩm riêng</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>     
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Hiển thị shop ở mục Gian hàng chính hãng Sendo</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={false}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={true}/></span>
+                                <span><ItemTick type={true}/></span>     
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Hiển thị sản phẩm ở trang SenMall</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={false}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={true}/></span>
+                                <span><ItemTick type={true}/></span>     
                             </td>
                             
                         </tr>
@@ -89,15 +166,57 @@ function TypeShop() {
                                 <span>Shop Uy Tín</span>     
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <span>- Ưu tiên xét duyệt sản phẩm/Shop</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>     
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Được nhận diện là Shop Uy Tín</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>     
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>- Tham gia chương trình thúc đẩy bán hàng do Sendo tài trợ</span>
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>  
+                            </td>
+                            <td>
+                                <span><ItemTick type={false}/></span>
+                                <span><ItemTick type={true}/></span>     
+                            </td>
+                            
+                        </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td ></td>
                             <td >
-                                <a><p>Tạo shop Sendo</p></a>
+                                <a  onClick={()=>{navigate(`/inforshop`,{state:valueSendo})}}><p>Tạo shop Sendo</p></a>
                             </td>
                             <td >
-                                <a><p>Tạo shop SenMail</p></a>
+                                <a onClick={()=>{navigate(`/inforshop`,{state:valueSenmail})}}><p>Tạo shop SenMail</p></a>
                             </td>
                         </tr>
                     </tfoot>
