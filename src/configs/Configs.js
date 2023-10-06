@@ -1,5 +1,5 @@
 const routes = {
-    login:"/login",
+    login:"/",
     taoshop:"/tao-shop",
     taoinforshop:"/inforshop",
     bangtin:"/bang-tin",
