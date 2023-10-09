@@ -1,25 +1,28 @@
-import { Context } from "./Context";
-import { useEffect, useState } from "react";
+import {Context} from './Context';
+import {useEffect, useState} from 'react';
 function Provider({children}) {
-    const [hidemenu,sethidemenu]=useState(false)
-    const [icon,seticon]=useState(false)
-    const [menufix,setmenufix]=useState(false)
-    useEffect(()=> {
-        const fixedMenu = () => {
-            if(document.documentElement.scrollTop > 50 ) {
-                setmenufix(true)
-            }
-            else {
-                setmenufix(false)
-            }
-        }
-        window.addEventListener('scroll',fixedMenu)
-        return () => {
-            window.removeEventListener('scroll', fixedMenu);
-        };
-    })
-    return <Context.Provider value={{hidemenu,sethidemenu,icon,seticon,menufix,setmenufix}}>
-        {children}
+  const [hidemenu, sethidemenu] = useState(false);
+  const [icon, seticon] = useState(true);
+  const [menufix, setmenufix] = useState(false);
+  useEffect(() => {
+    const fixedMenu = () => {
+      if (document.documentElement.scrollTop > 50) {
+        setmenufix(true);
+      } else {
+        setmenufix(false);
+      }
+    };
+    window.addEventListener('scroll', fixedMenu);
+    return () => {
+      window.removeEventListener('scroll', fixedMenu);
+    };
+  });
+  return (
+    <Context.Provider
+      value={{hidemenu, sethidemenu, icon, seticon, menufix, setmenufix}}
+    >
+      {children}
     </Context.Provider>
+  );
 }
-export default Provider
+export default Provider;

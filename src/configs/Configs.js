@@ -3,6 +3,7 @@ const routes = {
     taoshop:"/tao-shop",
     taoinforshop:"/inforshop",
     bangtin:"/bang-tin",
+    sanpham:"/san-pham",
     shopuytin:"/shop-uy-tin",
     lienhe:{
         nhavanchuyen:"/chinh-sach-nguoi-ban",

@@ -1,31 +1,33 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
 }
 body {
-    overflow-y: overlay;
+  overflow-y: overlay;
 }
 html *::-webkit-scrollbar {
-    border-radius: 0;
-    width: 8px;
+  border-radius: 0;
+  width: 8px;
 }
 html *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(22, 24, 35, 0.29);
+  border-radius: 4px;
+  background-color: rgba(22, 24, 35, 0.29);
 }
 html *::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0);
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 .container {
-    width: 100%;
-    display: flex;
-    background-color: #f1f2f3;
+  width: 100%;
+  display: flex;
+  background-color: #f1f2f3;
 }
 .content {
-    width:calc(100% - 264px);
-    position: relative;
+  width: calc(100% - 264px);
+}
+.wrappContent {
+  position: absolute;
+  width: 100%;
 }

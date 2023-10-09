@@ -1,0 +1,155 @@
+.wrapper {
+  width: 100%;
+  padding: 0px 24px;
+  border-radius: 4px;
+}
+.row1 {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+.row1 .actionButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+
+  button {
+    background-color: #ee2624;
+    color: #fff;
+    padding: 11px 16px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #f1514f;
+  }
+}
+.iconReturn {
+  font-size: 24px;
+  padding: 8px;
+  background-color: #e7e8ea;
+  color: #3f4b53;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.filterProduct {
+  background-color: #fff;
+  padding: 0px 12px;
+
+  .cateFilter {
+    display: flex;
+    align-items: center;
+  }
+  .cateFilter li {
+    padding: 12px 24px;
+    border-bottom: 2px solid #e7e8ea;
+    font-weight: 700;
+    cursor: pointer;
+    color: #3f4b53;
+    transition: 0.25s;
+    font-size: 14px;
+  }
+  .cateFilter li:hover {
+    background-color: #f2f3f4;
+  }
+  .cateFilter li.active {
+    border-bottom: 2px solid #ee2624;
+    color: #ee2624;
+  }
+  margin: 12px 0px;
+}
+.filterProduct2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  > div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+  }
+  .left,
+  .center {
+    width: 30%;
+  }
+  .left span {
+    width: auto;
+  }
+  .btn {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .btn-addProduct {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #fff;
+    color: #3f4b53;
+    border-radius: 4px;
+    transition: 0.25s;
+  }
+  .btn-addProduct:hover {
+    background-color: #f2f3f4;
+  }
+}
+.listProduct {
+  background-color: #fff;
+  padding: 0px 12px;
+  border-radius: 8px;
+  margin: 12px 0px 24px 0px;
+  .noneProduct {
+    margin: 0px auto;
+    padding: 60px;
+    text-align: center;
+  }
+  .noneProduct img {
+    width: 463px;
+    height: 260px;
+    margin-bottom: 24px;
+  }
+  .noneProduct p {
+    color: #0f1e29;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .noneProduct span {
+    color: #0f1e29;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-bottom: 16px;
+    font-weight: 400;
+    display: block;
+  }
+  .noneProduct a {
+    padding: 11px 16px;
+    background-color: #ee2624;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+}
+.filterProduct2 {
+  .center.active {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+}

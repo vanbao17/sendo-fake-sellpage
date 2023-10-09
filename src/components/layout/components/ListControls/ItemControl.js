@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./ListControls.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const cx = classNames.bind(styles)
 function ItemControl({datas,indexs}) {
     return <div className={cx("wrapperItem")}>
@@ -28,7 +29,7 @@ function ItemControl({datas,indexs}) {
             </ul>
         </div>
         <div className={cx('content-down')}>
-            <a href={datas.path} >{datas.action}</a>
+            <Link to={datas.path} >{datas.action}</Link>
         </div>
     </div>;
 }

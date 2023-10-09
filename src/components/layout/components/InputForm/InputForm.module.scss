@@ -1,52 +1,90 @@
+* {
+  z-index: 1;
+}
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-    width: 100%;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding: 12px;
+  color: #585757;
+  z-index: 1;
 }
 label {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 .noneAction {
-    background-color: #e7e8ea;
-    border: none;
-    border-color: #cfd2d4;
-    &:focus {
-        box-shadow: none;
-    }
+  background-color: #e7e8ea;
+  border: none;
+  border-color: #cfd2d4;
+  &:focus {
+    box-shadow: none;
+  }
 }
 .inputTippy {
-    position: relative;
-    input {
-        width: 100%;
-    }
-    .icon {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(-50%,-50%);
-    }
+  position: relative;
+  .icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+  }
+  .text-indent {
+    text-indent: 25px;
+  }
 }
 .containerTippy {
-    width: 97%;
-    background-color: #fff;
-    margin: 0px auto;
-    box-shadow: 0 -4px 16px 0 rgba(0,0,0,.1), 0 8px 16px 0 rgba(0,0,0,.1);
-    border-radius: 4px;
-    li {
-        padding: 12px;
-        line-height: 24px;
-        cursor: pointer;
-        font-size: 14px;
-    }
-    li:hover {
-        background-color: #f2f3f4;
-    }
-    input {
-        cursor: pointer;
-    }
+  width: 97%;
+  background-color: #fff;
+  margin: 0px auto;
+  box-shadow:
+    0 -4px 16px 0 rgba(0, 0, 0, 0.1),
+    0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  li {
+    padding: 12px;
+    line-height: 24px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  li:hover {
+    background-color: #f2f3f4;
+  }
+  input {
+    cursor: pointer;
+  }
 }
-[data-tippy-root] {
-    width: 100%;
+.wrapper [data-tippy-root] {
+  width: 100%;
+}
+.cbb {
+  width: 100%;
+  border: 1px solid #cfd2d4;
+  padding: 12px 16px;
+  transition: 0.25s;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    border-color: #3f81fe;
+  }
+}
+
+.shadowBox {
+  box-shadow: 0 0 0 1px #3f81fe;
+}
+form {
+  display: flex;
+  padding: 0;
+  input.text-indent {
+    text-indent: 25px;
+  }
+}
+.small {
+  width: 17%;
+  padding: 0px;
+}
+.normal {
+  width: 40%;
+  padding: 0px;
 }

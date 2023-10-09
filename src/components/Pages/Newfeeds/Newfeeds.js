@@ -9,9 +9,9 @@ const cx=classNames.bind(styles)
 
 function Newfeeds() {
     return <div className={cx('wrapper')}>
-        <Tasks />
         <ListControls />
         <Overview />
+        <Tasks />
         <Statistical />
         <SlideImages />
     </div>;
