@@ -17,7 +17,6 @@ const cx = classNames.bind(styles);
 function SideBar() {
   const {hidemenu, sethidemenu} = useContext(Context);
   const {icon, seticon} = useContext(Context);
-  console.log(icon, hidemenu);
   return (
     <div
       className={cx('wrapper', hidemenu == true ? 'minimenu' : 'normal')}

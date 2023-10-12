@@ -18,6 +18,10 @@ function InputForm({
   onCallback,
   tippyData,
   icon,
+  iconright,
+  classesWrapper,
+  banFocus,
+  unit,
 }) {
   const classes = cx(
     classname ?? '',
@@ -32,11 +36,10 @@ function InputForm({
   const handelCallback = (e) => {
     onCallback(e.target.value);
   };
-
   return (
-    <div className={cx('wrapper', classes)}>
+    <div className={cx('wrapper', classesWrapper)}>
       <div className={cx('container')}>
-        <label htmlFor={name}>{text}</label>
+        <label htmlFor={name}>{text ?? ''}</label>
         {tippyData ? (
           <TippyHeadless
             interactive={true}
@@ -101,6 +104,17 @@ function InputForm({
               className={classes}
               value={value}
             />
+            {iconright ? (
+              <div className={cx('icon', 'position')}>{iconright}</div>
+            ) : (
+              <></>
+            )}
+
+            {unit ? (
+              <div className={cx('unit', 'position')}>{unit}</div>
+            ) : (
+              <></>
+            )}
           </form>
         )}
       </div>

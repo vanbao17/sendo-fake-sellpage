@@ -12,6 +12,7 @@ import HeaderNoneCate from '../components/layout/Header/HeaderNoneCate';
 import CreateInforShop from '../components/Pages/CreateInforShop/CreateInforShop';
 import TypeShop from '../components/Pages/TypeShop/TypeShop';
 import Products from '../components/Pages/Products/Products';
+import CreateProducts from '../components/Pages/CreateProducts/CreateProducts';
 const publicRoutes = [
   {
     path: Config.login,
@@ -74,6 +75,10 @@ const publicRoutes = [
   {
     path: Config.sanpham,
     component: Products,
+  },
+  {
+    path: Config.taosanpham,
+    component: CreateProducts,
   },
 ];
 export default publicRoutes;

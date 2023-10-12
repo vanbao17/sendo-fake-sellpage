@@ -10,7 +10,7 @@ import {
   faFile,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {
   BoxIcon,
@@ -22,10 +22,11 @@ import {
   StatusIcon,
   TrashIcon,
 } from '../../Icons';
+import {Context} from '../../../store/Context';
 const cx = classNames.bind(styles);
-
 function Products() {
-  const [filterProduct, setfilterProduct] = useState(true);
+  const {hidemenu, sethidemenu} = useContext(Context);
+  const [filterProduct, setfilterProduct] = useState(false);
   const handleClickFilter = () => {
     setfilterProduct(!filterProduct);
   };
@@ -129,7 +130,7 @@ function Products() {
             ></InputForm>
             <span>0-0 trên 0 sản phẩm</span>
           </div>
-          <div className={cx('center', filterProduct == false ? 'active' : '')}>
+          <div className={cx('center', filterProduct == true ? 'active' : '')}>
             <span>Sắp xếp theo:</span>
             <InputForm
               classname={cx('normal')}
@@ -160,7 +161,14 @@ function Products() {
             </div>
             <p>Không có sản phẩm</p>
             <span>Bạn không có sản phẩm nào.</span>
-            <Link to={'/san-pham/dang-san-pham'}>Thêm sản phẩm</Link>
+            <Link
+              onClick={() => {
+                sethidemenu(!hidemenu);
+              }}
+              to={'/san-pham/dang-san-pham'}
+            >
+              Thêm sản phẩm
+            </Link>
           </div>
         </div>
       </div>

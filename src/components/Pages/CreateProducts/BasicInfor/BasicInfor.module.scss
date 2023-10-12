@@ -1,0 +1,130 @@
+.wrapperBasicInfor {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+}
+.title {
+  font-weight: 700;
+  color: #0f1e29;
+  line-height: 22px;
+}
+.information {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  background-color: #e7effe;
+  .icon {
+    color: #0f1e29;
+  }
+  span {
+    padding: 8px;
+    font-size: 14px;
+    color: #3f4b53;
+    font-weight: 400;
+  }
+  span a {
+    display: inline-block;
+    color: #0f62fe;
+  }
+}
+.salePoint {
+  padding: 8px 12px;
+  border-right: 1px solid #cfd2d4;
+  border-left: 1px solid #cfd2d4;
+  border-bottom: 1px solid #cfd2d4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  .point {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .point .icon {
+    padding: 5px;
+    background-color: #cfd2d4;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+  .point .icon:hover {
+    background-color: #f2f3f4;
+  }
+}
+.progress {
+  width: 100%;
+  height: 4px;
+  background-color: #e7e8ea;
+}
+.urlCate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.iconpen {
+  color: #0f62fe;
+}
+.addImagePro {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.addImagePro > div {
+  border: 1px dashed #cfd2d4;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  padding: 4px;
+  margin-top: 8px;
+}
+.textImage {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6f787e;
+}
+.iconMoutain,
+.iconCamera {
+  padding: 12px 24px;
+  background-color: #f2f3f4;
+  cursor: pointer;
+}
+.addImagePro div .icon {
+  width: 30px;
+  height: 24px;
+}
+.addImagePro div span {
+  line-height: 22px;
+  text-align: center;
+}
+.textQuanlity {
+  color: #6f787e;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+  text-align: end;
+}
+.ContainerInput .formNormal {
+  width: 45%;
+}
+.listInput {
+  max-width: 48.6666666667%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.smallwrapper {
+  width: 42%;
+  overflow: hide;
+  padding: 0;
+}
+.containerWord {
+  width: 630px;
+  height: 400px;
+}

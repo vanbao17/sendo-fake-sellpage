@@ -485,3 +485,65 @@ export const InforIcon = ({width = '24px', height = '24px', className}) => (
     ></path>
   </svg>
 );
+export const WarningIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 12 12"
+  >
+    <path
+      d="M6 1.5c.65 0 1.24.34 1.56.89l3.19 5.39c.33.55.33 1.24.01 1.8-.31.56-.91.91-1.57.92H2.8c-.66 0-1.25-.36-1.58-.92a1.79 1.79 0 01.02-1.8l3.19-5.39c.32-.55.92-.89 1.56-.89zm0 6.3c-.25 0-.45.2-.45.45s.2.45.45.45.45-.2.45-.45-.2-.45-.45-.45zm.46-3.6h-.91v3.15h.9V4.2z"
+      fill="currentColor"
+    ></path>
+  </svg>
+);
+export const PenIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+  >
+    <path
+      d="M16.437 2c.655 0 1.283.261 1.741.723l3.101 3.101a2.462 2.462 0 010 3.482L9.958 20.624c-.699.805-1.69 1.3-2.823 1.378H2v-1l.003-4.215c.085-1.054.576-2.035 1.323-2.694l11.37-11.368A2.456 2.456 0 0116.436 2zm-4.135 5.945L4.696 15.55c-.405.358-.656.86-.696 1.318v3.135l3.064.002c.534-.038 1.031-.287 1.43-.743l7.562-7.563-3.754-3.754zM16.437 4a.456.456 0 00-.323.135L13.716 6.53l3.754 3.754 2.395-2.393a.462.462 0 000-.653L16.76 4.135A.456.456 0 0016.437 4z"
+      fill="currentColor"
+      fillRule="nonzero"
+    ></path>
+  </svg>
+);
+export const MoutainIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 30 24"
+    version="1.1"
+  >
+    <path
+      d="M12.009 4.503l5.957 10.724c.373.67 1.49.67 1.862 0l2.048-3.686c.372-.67 1.49-.67 1.862 0L29.88 22.6c.373.614-.186 1.396-.93 1.396H1.025a.933.933 0 01-.931-1.34L10.147 4.502c.373-.67 1.49-.67 1.862 0zM23.989 0c1.661 0 3 1.34 3 3s-1.339 3-3 3a2.995 2.995 0 01-2.999-3c-.053-1.66 1.34-3 3-3z"
+      fill="currentColor"
+      fillRule="nonzero"
+    ></path>
+  </svg>
+);
+export const AddIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+  >
+    <path
+      d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1zm0 2a9 9 0 100 18 9 9 0 000-18zm1 4v4h4v2h-4v4h-2v-4H7v-2h4V7h2z"
+      fill="currentColor"
+      fillRule="nonzero"
+    ></path>
+  </svg>
+);

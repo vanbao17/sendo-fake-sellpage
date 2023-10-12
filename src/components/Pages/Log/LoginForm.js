@@ -14,7 +14,7 @@ function LoginForm() {
   valueInput.pass.length < 6 ? (errPass = false) : console.log(123);
   const navigate = useNavigate();
   return (
-    <form action="GET" method="">
+    <form method="GET">
       <div className={cx('mailUser')}>
         <label
           htmlFor="emailsdt"

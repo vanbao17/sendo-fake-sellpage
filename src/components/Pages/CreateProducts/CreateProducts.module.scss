@@ -1,0 +1,214 @@
+.wrapper {
+  padding: 24px;
+}
+.url {
+  font-size: 14px;
+  color: #6f787e;
+  font-weight: 400;
+}
+.titlePage {
+  display: flex;
+  justify-content: space-between;
+  line-height: 18px;
+  padding: 12px 0px;
+  .text {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+  }
+  .Feedback {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #3f4b53;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+.content {
+  padding: 12px;
+  margin: -8px;
+  display: flex;
+  .left {
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .right {
+    width: auto;
+    color: #0f1e29;
+    margin-left: 16px;
+  }
+  .right .icon {
+    color: #ee2624;
+    width: 14px;
+    height: 14px;
+  }
+  .right .guide {
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 50px;
+  }
+  .right .guide .container {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-left: 2px solid #ee2624;
+    font-size: 14px;
+  }
+  .right .guide span {
+    font-weight: 700;
+    line-height: 18px;
+    color: #3f4b53;
+    margin-right: 8px;
+    width: 255px;
+  }
+}
+
+.ContainerInput {
+  width: 100%;
+  display: flex;
+  padding: 8px 8px;
+  span {
+    min-width: 20.6666666667%;
+    font-size: 14px;
+  }
+  .input {
+    padding: 0;
+  }
+  .content {
+    width: 100%;
+    flex-direction: column;
+  }
+  .content .warning {
+    color: #ee2624;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+.salePoint {
+  padding: 8px 12px;
+  border-right: 1px solid #cfd2d4;
+  border-left: 1px solid #cfd2d4;
+  border-bottom: 1px solid #cfd2d4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  .point {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .point .icon {
+    padding: 5px;
+    background-color: #cfd2d4;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.25s;
+  }
+  .point .icon:hover {
+    background-color: #f2f3f4;
+  }
+}
+.progress {
+  width: 100%;
+  height: 4px;
+  background-color: #e7e8ea;
+}
+.urlCate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.iconpen {
+  color: #0f62fe;
+}
+.addImagePro {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.addImagePro > div {
+  border: 1px dashed #cfd2d4;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  padding: 4px;
+  margin-top: 8px;
+}
+.textImage {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6f787e;
+}
+.iconMoutain,
+.iconCamera {
+  padding: 12px 24px;
+  background-color: #f2f3f4;
+  cursor: pointer;
+}
+.addImagePro div .icon {
+  width: 30px;
+  height: 24px;
+}
+.addImagePro div span {
+  line-height: 22px;
+  text-align: center;
+}
+.textQuanlity {
+  color: #6f787e;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 4px;
+  text-align: end;
+}
+.ContainerInput .formNormal {
+  width: 45%;
+}
+.listInput {
+  max-width: 48.6666666667%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.smallwrapper {
+  width: 42%;
+  overflow: hide;
+  padding: 0;
+}
+.ship {
+  margin-top: 12px;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  .title {
+    font-weight: 700;
+    padding: 8px;
+    font-size: 16px;
+  }
+  input {
+    width: 16px;
+    height: auto;
+  }
+}
+.choose {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  gap: 5px;
+}

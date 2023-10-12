@@ -1,0 +1,92 @@
+.wrapperSEO {
+  width: 100%;
+  padding: 24px;
+  background-color: #fff;
+  margin-top: 12px;
+  border-radius: 8px;
+  .title {
+    font-weight: 700;
+    padding: 12px 8px;
+    font-size: 16px;
+  }
+}
+textarea {
+  padding: 12px 16px;
+  outline: none;
+  border: none;
+  border: 1px solid #cfd2d4;
+  border-radius: 4px;
+  &:hover {
+    border-color: #3f81fe;
+  }
+  &:focus {
+    border-color: #3f81fe;
+    box-shadow: 0 0 0 1px #3f81fe;
+  }
+}
+.url {
+  color: #cfd2d4;
+  font-size: 14px;
+}
+.form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  button {
+    max-width: 100%;
+    padding: 13px 16px;
+    border-radius: 4px;
+  }
+  span {
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+.listProduct {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.addProduct span {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #3f4b53;
+  width: 100%;
+}
+.iconAdd {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #0f62fe;
+  border-radius: 4px;
+  color: #0f62fe;
+  .icon {
+    width: 14px;
+    height: auto;
+  }
+}
+.listItem {
+  padding: 24px;
+}
+.item {
+  list-style-type: circle;
+  color: #6f787e;
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.item span:nth-child(2) {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #e7e8ea;
+  border-color: #9fa5a9;
+  color: #6f787e;
+  border-radius: 50px;
+}

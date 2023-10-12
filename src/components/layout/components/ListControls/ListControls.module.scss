@@ -1,106 +1,106 @@
 .wrapper {
-    width: 100%;
-    display: flex;
-    padding: 12px 0px;
-    align-items: center;
-    gap: 25px;
-    background-color: transparent;
+  width: 100%;
+  display: flex;
+  padding: 12px 0px;
+  align-items: center;
+  gap: 25px;
+  background-color: transparent;
 }
 .wrapperItem {
-    width: calc(100%/3);
-    padding: 24px;
-    border-radius: 8px;
-    background-color: #fff;
-    .title {
-        display: flex;
-        align-items: flex-end;
-        margin-bottom: 16px;
-    }
-    .title div:nth-child(1) {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 16px;
-        border-radius: 4px;
-    }
-    .title div:nth-child(2) {
-        display: flex;
-        flex-direction: column;
-    }
-    .icon {
-        width: 24px;
-        height: 24px;
-    }
-    .data span:nth-child(1) {
-        color: #ee2624;
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 32px;
-    }
-    .data span:nth-child(2) {
-        color: #6f787e;
-        font-size: 12px;
-        font-weight: 700;
-    }
-    .listItem-data {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .listItem-data li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        line-height: 26px;
-    }
-    .listItem-data li div {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .listItem-data li .icon {
-        width: 8px;
-        height: 8px;
-    }
-    .listItem-data li span {
-        color: #6f787e;
-        font-weight: 400;
-        font-size: 12px;
-    }
-    .listItem-data li div span {
-        font-size: 16px;
-        font-weight: 700;
-        color: #3f4b53;
-    }
-    .content-down a {
-        width: 100%;
-        font-size: 14px;
-        margin-top: 16px;
-        padding: 7px 16px;
-        line-height: 1.29;
-        font-weight: 700;
-        background-color: #e7e8ea;
-        border-radius: 4px;
-        text-align: center;
-    }
+  width: calc(100% / 3);
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  .title {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 16px;
+  }
+  .title div:nth-child(1) {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    border-radius: 4px;
+  }
+  .title div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  .data span:nth-child(1) {
+    color: #ee2624;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+  .data span:nth-child(2) {
+    color: #6f787e;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .listItem-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .listItem-data li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 26px;
+  }
+  .listItem-data li div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .listItem-data li .icon {
+    width: 8px;
+    height: 8px;
+  }
+  .listItem-data li span {
+    color: #6f787e;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .listItem-data li div span {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3f4b53;
+  }
+  .content-down a {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 16px;
+    padding: 7px 16px;
+    line-height: 1.29;
+    font-weight: 700;
+    background-color: #e7e8ea;
+    border-radius: 4px;
+    text-align: center;
+  }
 }
 .iconbox-0 {
-    svg path {
-        fill: #ee2624;
-    }
-    background-color: #fbcbcb ;
+  svg path {
+    fill: #ee2624;
+  }
+  background-color: #fbcbcb;
 }
 .iconbox-1 {
-    svg path {
-        fill: #14babd;
-    }
-    background-color: #c7efef ;
+  svg path {
+    fill: #14babd;
+  }
+  background-color: #c7efef;
 }
 .iconbox-2 {
-    svg path {
-        fill: #6258bc;
-    }
-    background-color: #dad7ef ;
+  svg path {
+    fill: #6258bc;
+  }
+  background-color: #dad7ef;
 }

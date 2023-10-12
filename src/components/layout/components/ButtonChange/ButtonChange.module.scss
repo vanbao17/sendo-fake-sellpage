@@ -1,0 +1,39 @@
+.wrapper {
+  //   width: 50%;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  span {
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+.progress {
+  width: 42px;
+  height: 16px;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+}
+.circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  transition: 0.25s;
+}
+.circle.active {
+  left: 50%;
+  background-color: #f1514f;
+}
+.circle.noneactive {
+  left: 0%;
+  background-color: #b7bbbf;
+}
+.progress.active {
+  background-color: #fbcbcb;
+}
+.progress.noneactive {
+  background-color: #e7e8ea;
+}
