@@ -6,10 +6,11 @@ import TypeShop from './components/Pages/TypeShop/TypeShop';
 import CreateInforShop from './components/Pages/CreateInforShop/CreateInforShop';
 import publicRoutes from './routes/Routes';
 import {Fragment} from 'react';
+import Popup from './components/layout/components/Popup/Popup';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App" style={{position: 'relative'}}>
         <Routes>
           {publicRoutes.map((item, index) => {
             let Layout;

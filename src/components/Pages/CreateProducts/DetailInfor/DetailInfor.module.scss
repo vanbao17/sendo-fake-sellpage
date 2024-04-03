@@ -1,0 +1,26 @@
+.wrapperDetailInfor {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 12px;
+}
+.title {
+  font-weight: 700;
+  color: #0f1e29;
+  line-height: 22px;
+}
+.dropdown {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  padding: 12px 16px;
+  border: 1px solid #cfd2d4;
+  cursor: pointer;
+  transition: 0.25s;
+  color: #6f787e;
+  &:hover {
+    border-color: #3f81fe;
+  }
+}

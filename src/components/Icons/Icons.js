@@ -547,3 +547,35 @@ export const AddIcon = ({width = '24px', height = '24px', className}) => (
     ></path>
   </svg>
 );
+export const SearchIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+  >
+    <path
+      d="M10 2a8 8 0 016.32 12.905l5.387 5.388-1.414 1.414-5.388-5.386A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"
+      fill="currentColor"
+      fillRule="nonzero"
+    ></path>
+  </svg>
+);
+export const CloseIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 16 16"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+  >
+    <path
+      color="#6f787e"
+      fill="#6F787E"
+      d="M8 9.414l-4.293 4.293-1.414-1.414L6.586 8 2.293 3.707l1.414-1.414L8 6.586l4.293-4.293 1.414 1.414L9.414 8l4.293 4.293-1.414 1.414L8 9.414z"
+    ></path>
+  </svg>
+);

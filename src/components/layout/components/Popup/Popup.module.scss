@@ -1,0 +1,10 @@
+.wrapper {
+  width: calc(100% * 2 / 3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  position: fixed;
+  background-color: #fff;
+  border-radius: 8px;
+}

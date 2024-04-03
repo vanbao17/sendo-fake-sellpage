@@ -17,9 +17,14 @@ import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import WordMini from '../WordMini/WordMini';
 import ButtonChange from '../../../layout/components/ButtonChange/ButtonChange';
+import {useContext} from 'react';
+import {Context} from '../../../../store/Context';
+import DetailInfor from '../DetailInfor/DetailInfor';
 const cx = classNames.bind(styles);
 
 function BasicInfor() {
+  const {listCate, setlistCate} = useContext(Context);
+  const {chosseCate, setchosseCate} = useContext(Context);
   return (
     <div className={cx('wrapperBasicInfor')}>
       <div className={cx('title')}>Nhập tên sản phẩm và chọn Ngành hàng</div>
@@ -48,10 +53,21 @@ function BasicInfor() {
         </div>
       </InputContainer>
       <InputContainer text={'Ngành hàng'} important={true}>
-        <span className={cx('urlCate')}>
-          Chưa chọn ngành hàng
-          <PenIcon className={cx('iconpen')} width="14px" height="14px" />
-        </span>
+        {chosseCate.length != 3 ? (
+          <span
+            className={cx('urlCate')}
+            onClick={() => {
+              setlistCate(!listCate);
+            }}
+          >
+            Chưa chọn ngành hàng
+            <PenIcon className={cx('iconpen')} width="14px" height="14px" />
+          </span>
+        ) : (
+          <span>
+            {chosseCate[0].ten},{chosseCate[1].ten} , {chosseCate[2].ten}
+          </span>
+        )}
 
         <ul className={cx('listurlCate')}>
           <li></li>
@@ -59,120 +75,126 @@ function BasicInfor() {
           <li></li>
         </ul>
       </InputContainer>
-      <InputContainer text={'Ảnh sản phẩm'} important={true}>
-        <span className={cx('textImage')}>
-          Thêm 1 ảnh đại diện. Tổng tối đa 10 ảnh.
-        </span>
-        <div className={cx('addImagePro')}>
-          <div className={cx('profile')}>
-            <div className={cx('iconMoutain')}>
-              <MoutainIcon className={cx('icon')} />
+      {chosseCate.length != 0 ? (
+        <>
+          <InputContainer text={'Ảnh sản phẩm'} important={true}>
+            <span className={cx('textImage')}>
+              Thêm 1 ảnh đại diện. Tổng tối đa 10 ảnh.
+            </span>
+            <div className={cx('addImagePro')}>
+              <div className={cx('profile')}>
+                <div className={cx('iconMoutain')}>
+                  <MoutainIcon className={cx('icon')} />
+                </div>
+                <span>Ảnh đại diện</span>
+              </div>
+              <div className={cx('imgDesc')}>
+                <div className={cx('iconMoutain')}>
+                  <MoutainIcon className={cx('icon')} />
+                </div>
+                <span>Thêm ảnh</span>
+              </div>
             </div>
-            <span>Ảnh đại diện</span>
-          </div>
-          <div className={cx('imgDesc')}>
-            <div className={cx('iconMoutain')}>
-              <MoutainIcon className={cx('icon')} />
+          </InputContainer>
+          <InputContainer text={'Video sản phẩm'} important={true}>
+            <div className={cx('addImagePro')}>
+              <div className={cx('profile')}>
+                <div className={cx('iconCamera')}>
+                  <CameraIcon className={cx('icon')} />
+                </div>
+                <span>Thêm video</span>
+              </div>
             </div>
-            <span>Thêm ảnh</span>
-          </div>
-        </div>
-      </InputContainer>
-      <InputContainer text={'Video sản phẩm'} important={true}>
-        <div className={cx('addImagePro')}>
-          <div className={cx('profile')}>
-            <div className={cx('iconCamera')}>
-              <CameraIcon className={cx('icon')} />
+          </InputContainer>
+          <InputContainer text={'Mô tả sản phẩm '} important={true}>
+            <div className={cx('containerWord')}>
+              <WordMini />
             </div>
-            <span>Thêm video</span>
-          </div>
-        </div>
-      </InputContainer>
-      <InputContainer text={'Mô tả sản phẩm '} important={true}>
-        <div className={cx('containerWord')}>
-          <WordMini />
-        </div>
-      </InputContainer>
-      <InputContainer
-        text={'Mã sản phẩm '}
-        important={true}
-        textQuanlity={true}
-        className={'formNormal'}
-      >
-        <InputForm
-          classesWrapper={cx('input')}
-          placeholder={'Nhập mã sản phẩm tối thiểu 3 - 45 ký tự'}
-        />
-      </InputContainer>
-      <InputContainer text={'Tình trạng hàng'}>
-        <ButtonChange status={true} data={['Đang bán', 'Ngừng bán']} />
-      </InputContainer>
-      <InputContainer text={'Giá gốc sản phẩm *'} className={'formNormal'}>
-        <InputForm
-          classesWrapper={cx('input')}
-          placeholder={'Trên 8.000đ'}
-          unit={'đ'}
-        />
-      </InputContainer>
-      <InputContainer text={'Giá khuyến mãi'} className={'formNormal'}>
-        <InputForm
-          classesWrapper={cx('input')}
-          placeholder={'Trên 1.000đ'}
-          unit={'đ'}
-        />
-      </InputContainer>
-      <InputContainer
-        text={'Thời gian khuyến mãi'}
-        className={'formNormal'}
-        important={true}
-      >
-        <InputForm
-          classesWrapper={cx('input')}
-          placeholder={'Ngày bắt đầu - ngày kết thúc'}
-          iconright={<CalendarIcon />}
-        />
-        <div style={{marginTop: '12px'}}></div>
-        <ButtonChange
-          status={false}
-          data={[
-            'Ngừng bán',
-            'Đến ngày hiệu lực sẽ tự động bật. Tắt nếu muốn dừng khuyến mãi',
-          ]}
-        />
-      </InputContainer>
-      <InputContainer text={'Số lượng tồn kho'} className={'formNormal'}>
-        <InputForm
-          classesWrapper={cx('input')}
-          placeholder={'Số lượng'}
-          value={100}
-        />
-      </InputContainer>
-      <InputContainer text={'Khối lượng'} className={'formNormal'}>
-        <InputForm
-          classesWrapper={cx('input')}
-          placeholder={'Từ 10 - 150.000g'}
-          unit={'g'}
-        />
-      </InputContainer>
-      <InputContainer text={'Kích thước đóng gói'} important={true}>
-        <div className={cx('listInput')}>
-          <InputForm
-            classesWrapper={cx('smallwrapper', 'input')}
-            placeholder={'Dài '}
-            unit={'cm'}
-          />
-          <InputForm
-            classesWrapper={cx('smallwrapper', 'input')}
-            placeholder={'Rộng'}
-            unit={'cm'}
-          />
-          <InputForm
-            classesWrapper={cx('smallwrapper', 'input')}
-            placeholder={'Cao'}
-            unit={'cm'}
-          />
-        </div>
-      </InputContainer>
+          </InputContainer>
+          <InputContainer
+            text={'Mã sản phẩm '}
+            important={true}
+            textQuanlity={true}
+            className={'formNormal'}
+          >
+            <InputForm
+              classesWrapper={cx('input')}
+              placeholder={'Nhập mã sản phẩm tối thiểu 3 - 45 ký tự'}
+            />
+          </InputContainer>
+          <InputContainer text={'Tình trạng hàng'}>
+            <ButtonChange status={true} data={['Đang bán', 'Ngừng bán']} />
+          </InputContainer>
+          <InputContainer text={'Giá gốc sản phẩm *'} className={'formNormal'}>
+            <InputForm
+              classesWrapper={cx('input')}
+              placeholder={'Trên 8.000đ'}
+              unit={'đ'}
+            />
+          </InputContainer>
+          <InputContainer text={'Giá khuyến mãi'} className={'formNormal'}>
+            <InputForm
+              classesWrapper={cx('input')}
+              placeholder={'Trên 1.000đ'}
+              unit={'đ'}
+            />
+          </InputContainer>
+          <InputContainer
+            text={'Thời gian khuyến mãi'}
+            className={'formNormal'}
+            important={true}
+          >
+            <InputForm
+              classesWrapper={cx('input')}
+              placeholder={'Ngày bắt đầu - ngày kết thúc'}
+              iconright={<CalendarIcon />}
+            />
+            <div style={{marginTop: '12px'}}></div>
+            <ButtonChange
+              status={false}
+              data={[
+                'Ngừng bán',
+                'Đến ngày hiệu lực sẽ tự động bật. Tắt nếu muốn dừng khuyến mãi',
+              ]}
+            />
+          </InputContainer>
+          <InputContainer text={'Số lượng tồn kho'} className={'formNormal'}>
+            <InputForm
+              classesWrapper={cx('input')}
+              placeholder={'Số lượng'}
+              value={100}
+            />
+          </InputContainer>
+          <InputContainer text={'Khối lượng'} className={'formNormal'}>
+            <InputForm
+              classesWrapper={cx('input')}
+              placeholder={'Từ 10 - 150.000g'}
+              unit={'g'}
+            />
+          </InputContainer>
+          <InputContainer text={'Kích thước đóng gói'} important={true}>
+            <div className={cx('listInput')}>
+              <InputForm
+                classesWrapper={cx('smallwrapper', 'input')}
+                placeholder={'Dài '}
+                unit={'cm'}
+              />
+              <InputForm
+                classesWrapper={cx('smallwrapper', 'input')}
+                placeholder={'Rộng'}
+                unit={'cm'}
+              />
+              <InputForm
+                classesWrapper={cx('smallwrapper', 'input')}
+                placeholder={'Cao'}
+                unit={'cm'}
+              />
+            </div>
+          </InputContainer>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

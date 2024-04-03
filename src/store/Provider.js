@@ -4,6 +4,8 @@ function Provider({children}) {
   const [hidemenu, sethidemenu] = useState(false);
   const [icon, seticon] = useState(true);
   const [menufix, setmenufix] = useState(false);
+  const [listCate, setlistCate] = useState(false);
+  const [chosseCate, setchosseCate] = useState([]);
   useEffect(() => {
     const fixedMenu = () => {
       if (document.documentElement.scrollTop > 50) {
@@ -19,7 +21,18 @@ function Provider({children}) {
   });
   return (
     <Context.Provider
-      value={{hidemenu, sethidemenu, icon, seticon, menufix, setmenufix}}
+      value={{
+        hidemenu,
+        sethidemenu,
+        icon,
+        seticon,
+        menufix,
+        setmenufix,
+        listCate,
+        setlistCate,
+        chosseCate,
+        setchosseCate,
+      }}
     >
       {children}
     </Context.Provider>

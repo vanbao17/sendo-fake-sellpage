@@ -6,6 +6,7 @@ import 'tippy.js/dist/tippy.css'; // Import CSS của Tippy
 import 'tippy.js/animations/scale.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons';
+import {SearchIcon} from '../../../Icons';
 const cx = classNames.bind(styles);
 
 function InputForm({
@@ -21,6 +22,7 @@ function InputForm({
   iconright,
   classesWrapper,
   banFocus,
+  search,
   unit,
 }) {
   const classes = cx(
@@ -37,7 +39,7 @@ function InputForm({
     onCallback(e.target.value);
   };
   return (
-    <div className={cx('wrapper', classesWrapper)}>
+    <div className={cx('wrapper', classesWrapper, classname)}>
       <div className={cx('container')}>
         <label htmlFor={name}>{text ?? ''}</label>
         {tippyData ? (
