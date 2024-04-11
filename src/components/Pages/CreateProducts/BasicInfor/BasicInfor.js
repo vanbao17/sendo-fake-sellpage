@@ -17,16 +17,40 @@ import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import WordMini from '../WordMini/WordMini';
 import ButtonChange from '../../../layout/components/ButtonChange/ButtonChange';
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import {Context} from '../../../../store/Context';
 import DetailInfor from '../DetailInfor/DetailInfor';
+import DragFile from '../DragFile/DragFile';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
 const cx = classNames.bind(styles);
 
 function BasicInfor() {
   const {listCate, setlistCate} = useContext(Context);
   const {chosseCate, setchosseCate} = useContext(Context);
+  const [stateDragFileImage, setstateDragFileImage] = useState(false);
+  const [stateDragFileVideo, setstateDragFileVideo] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const handleStateImage = (state) => {
+    setstateDragFileImage(state);
+  };
+  const handleStateVideo = (state) => {
+    setstateDragFileVideo(state);
+  };
   return (
     <div className={cx('wrapperBasicInfor')}>
+      {stateDragFileImage == true ? (
+        <DragFile state={handleStateImage} title={'image'} />
+      ) : (
+        <></>
+      )}
+      {stateDragFileVideo == true ? (
+        <DragFile state={handleStateVideo} title={'video'} />
+      ) : (
+        <></>
+      )}
       <div className={cx('title')}>Nhập tên sản phẩm và chọn Ngành hàng</div>
       <div className={cx('information')}>
         <InforIcon className={cx('icon')} />
@@ -82,13 +106,28 @@ function BasicInfor() {
               Thêm 1 ảnh đại diện. Tổng tối đa 10 ảnh.
             </span>
             <div className={cx('addImagePro')}>
-              <div className={cx('profile')}>
-                <div className={cx('iconMoutain')}>
+              <div
+                className={cx('profile')}
+                onClick={() => {
+                  setstateDragFileImage(!stateDragFileImage);
+                }}
+              >
+                <div
+                  className={cx('iconMoutain')}
+                  onClick={() => {
+                    setstateDragFileImage(!stateDragFileImage);
+                  }}
+                >
                   <MoutainIcon className={cx('icon')} />
                 </div>
                 <span>Ảnh đại diện</span>
               </div>
-              <div className={cx('imgDesc')}>
+              <div
+                className={cx('imgDesc')}
+                onClick={() => {
+                  setstateDragFileImage(!stateDragFileImage);
+                }}
+              >
                 <div className={cx('iconMoutain')}>
                   <MoutainIcon className={cx('icon')} />
                 </div>
@@ -98,7 +137,12 @@ function BasicInfor() {
           </InputContainer>
           <InputContainer text={'Video sản phẩm'} important={true}>
             <div className={cx('addImagePro')}>
-              <div className={cx('profile')}>
+              <div
+                className={cx('profile')}
+                onClick={() => {
+                  setstateDragFileVideo(!stateDragFileVideo);
+                }}
+              >
                 <div className={cx('iconCamera')}>
                   <CameraIcon className={cx('icon')} />
                 </div>
@@ -144,12 +188,24 @@ function BasicInfor() {
             className={'formNormal'}
             important={true}
           >
-            <InputForm
+            {/* <InputForm
               classesWrapper={cx('input')}
               placeholder={'Ngày bắt đầu - ngày kết thúc'}
               iconright={<CalendarIcon />}
-            />
-            <div style={{marginTop: '12px'}}></div>
+            /> */}
+            <div className={cx('containerDate')}>
+              <DatePicker
+                className={cx('data_left')}
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+              <span>Đến</span>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+              />
+              <div style={{marginTop: '12px'}}></div>
+            </div>
             <ButtonChange
               status={false}
               data={[

@@ -9,8 +9,34 @@
   color: #0f1e29;
   line-height: 22px;
 }
+.container {
+  position: relative;
+  width: 45%;
+}
+.addAttribute {
+  width: 30% !important;
+}
+.addAttribute span {
+  cursor: pointer;
+}
+.addAttribute_input {
+  height: 100%;
+  outline: none;
+  border: none;
+}
+.btn-add span {
+  padding: 11px 16px;
+  background-color: #e7e8ea;
+  color: #3f4b53;
+  font-weight: 700;
+  transition: 0.25s;
+  border-radius: 4px;
+}
+.btn-add:hover span {
+  background-color: #f2f3f4;
+}
 .dropdown {
-  width: 50%;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,8 +45,43 @@
   border: 1px solid #cfd2d4;
   cursor: pointer;
   transition: 0.25s;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Các trình duyệt khác */
   color: #6f787e;
   &:hover {
     border-color: #3f81fe;
   }
+}
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.container input {
+  width: 100%;
+}
+.container .addAttribute {
+  width: 45% !important;
+}
+.addAttribute_value {
+  width: 30%;
+}
+.itemChosse {
+  z-index: 999;
+  font-size: 12px;
+  background-color: #f2f3f4;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.close_icon {
+  font-weight: 700;
+}
+.wrapperInput {
+  width: 50%;
+  margin: -12px !important;
 }

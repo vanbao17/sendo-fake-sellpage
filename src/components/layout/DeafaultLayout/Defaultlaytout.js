@@ -5,9 +5,11 @@ import Footer from '../Footer/Footer';
 import SideBar from '../SideBar/SideBar';
 import {useContext} from 'react';
 import {Context} from '../../../store/Context';
+import BlackPlace from './BlackPlace';
 const cx = classNames.bind(styles);
 function Defaultlaytout({children}) {
   const {hidemenu, sethidemenu} = useContext(Context);
+  const {listCate, setlistCate} = useContext(Context);
   return (
     <div className={cx('wrapper')}>
       <Header />
@@ -18,6 +20,7 @@ function Defaultlaytout({children}) {
           <Footer />
         </div>
       </div>
+      {listCate == true ? <BlackPlace /> : <></>}
     </div>
   );
 }

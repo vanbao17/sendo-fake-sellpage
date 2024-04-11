@@ -8,6 +8,7 @@ function ListItemTarget({data}) {
       {data.map((item, index) => {
         return (
           <ItemTarget
+            key={index}
             text={item.title}
             target={item.target != null ? item.target : null}
             quanlity={item.quanlity}

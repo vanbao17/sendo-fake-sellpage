@@ -217,9 +217,10 @@
   position: absolute;
   top: 50%;
   transform: translate(50%, -50%);
-  z-index: 999;
+  z-index: 900;
 }
 .containChooseProd {
+  z-index: 999 !important;
   .title {
     padding: 24px;
     display: flex;
@@ -314,4 +315,20 @@
     border-radius: 0;
     background-color: rgba(0, 0, 0, 0);
   }
+}
+.col1 .itemCate.active1 {
+  background-color: #fde5e4;
+  font-weight: 700;
+}
+.col2 .itemCate.active2 {
+  background-color: #fde5e4;
+  font-weight: 700;
+}
+.col3 .itemCate.active3 {
+  font-weight: 700;
+}
+.susscess {
+  transition: 0.25s;
+  background-color: #ee2624;
+  color: #fff;
 }

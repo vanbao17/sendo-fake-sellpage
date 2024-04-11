@@ -24,6 +24,7 @@ function InputForm({
   banFocus,
   search,
   unit,
+  onSelectDropBox,
 }) {
   const classes = cx(
     classname ?? '',
@@ -32,11 +33,19 @@ function InputForm({
   );
   const [showTippy, setshowTippy] = useState(false);
   const [valueDropbox, setvalueDropbox] = useState(
-    tippyData != undefined ? tippyData[0] : '',
+    // item.value != undefined ? item.value : item,
+    tippyData != undefined
+      ? tippyData[0].value != undefined
+        ? tippyData[0].value
+        : tippyData[0]
+      : '',
   );
   const divRef = useRef();
   const handelCallback = (e) => {
     onCallback(e.target.value);
+  };
+  const handleSelected = (data) => {
+    onSelectDropBox(data);
   };
   return (
     <div className={cx('wrapper', classesWrapper, classname)}>
@@ -57,12 +66,19 @@ function InputForm({
                       <li
                         key={index}
                         onClick={() => {
-                          setvalueDropbox(item);
+                          //handleSelected(item.value);
+                          onSelectDropBox(item);
+                          setvalueDropbox(
+                            item.value != undefined ? item.value : item,
+                          );
                           setshowTippy(!showTippy);
-                          divRef.current.innerHtml = item;
+                          divRef.current.innerHtml =
+                            item.value != undefined ? item.value : item;
                         }}
                       >
-                        <span>{item}</span>
+                        <span>
+                          {item.value != undefined ? item.value : item}
+                        </span>
                       </li>
                     );
                   })}

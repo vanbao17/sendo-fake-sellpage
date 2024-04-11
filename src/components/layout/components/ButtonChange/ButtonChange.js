@@ -5,7 +5,6 @@ const cx = classNames.bind(styles);
 
 function ButtonChange({data, status}) {
   const [changeCircle, setchangeCircle] = useState(status);
-  console.log(changeCircle);
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container')}>

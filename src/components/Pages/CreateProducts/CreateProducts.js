@@ -3,6 +3,7 @@ import styles from './CreateProducts.module.scss';
 import {
   CameraIcon,
   CloseIcon,
+  DocTickIcon,
   InforIcon,
   LetterIcon,
   SearchIcon,
@@ -12,10 +13,11 @@ import SEOInfor from './SEOInfor/SEOInfor';
 import Popup from '../../layout/components/Popup/Popup';
 import InputForm from '../../layout/components/InputForm/InputForm';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import {useContext, useEffect, useState} from 'react';
 import {Context} from '../../../store/Context';
 import DetailInfor from './DetailInfor/DetailInfor';
+import DragFile from './DragFile/DragFile';
 const cx = classNames.bind(styles);
 
 function CreateProducts() {
@@ -23,6 +25,7 @@ function CreateProducts() {
   const [dataDm1, setdataDm1] = useState([]);
   const [dataDm2, setdataDm2] = useState([]);
   const [dataDm3, setdataDm3] = useState([]);
+  const {blackPlace, seblackPlace} = useContext(Context);
   const {chosseCate, setchosseCate} = useContext(Context);
   useEffect(() => {
     fetch('http://localhost:3001/api/v1/danhmuc1')
@@ -52,7 +55,6 @@ function CreateProducts() {
         });
     }
   }, [chosseCate[1]]);
-  console.log(chosseCate);
   return (
     <div className={cx('wrapper')}>
       {listCate == true ? (
@@ -63,6 +65,7 @@ function CreateProducts() {
               <span
                 onClick={() => {
                   setlistCate(!listCate);
+                  seblackPlace(!blackPlace);
                 }}
               >
                 <CloseIcon className={cx('iconClose')} />
@@ -82,7 +85,14 @@ function CreateProducts() {
                       return (
                         <li
                           key={index}
-                          className={cx('itemCate')}
+                          className={cx(
+                            'itemCate',
+                            typeof chosseCate[0] !== 'undefined'
+                              ? chosseCate[0].dm1 == item.madm1
+                                ? 'active1'
+                                : ''
+                              : '',
+                          )}
                           onClick={() => {
                             setchosseCate([
                               {dm1: item.madm1, ten: item.tendm1},
@@ -102,7 +112,14 @@ function CreateProducts() {
                       return (
                         <li
                           key={index}
-                          className={cx('itemCate')}
+                          className={cx(
+                            'itemCate',
+                            typeof chosseCate[1] !== 'undefined'
+                              ? chosseCate[1].dm2 == item.madm2
+                                ? 'active2'
+                                : ''
+                              : '',
+                          )}
                           onClick={() => {
                             setchosseCate([
                               ...chosseCate,
@@ -123,7 +140,12 @@ function CreateProducts() {
                       return (
                         <li
                           key={index}
-                          className={cx('itemCate')}
+                          className={cx(
+                            'itemCate',
+                            // chosseCate[chosseCate.length - 1].dm3 == item.madm3
+                            //   ? 'active3'
+                            //   : '',
+                          )}
                           onClick={() => {
                             setchosseCate([
                               ...chosseCate,
@@ -133,7 +155,13 @@ function CreateProducts() {
                         >
                           <a>
                             <span>{item.tendm3}</span>
-                            {/* <FontAwesomeIcon icon={faChevronRight} /> */}
+                            {chosseCate[chosseCate.length - 1].dm3 ==
+                            item.madm3 ? (
+                              <FontAwesomeIcon icon={faCheck} />
+                            ) : (
+                              <></>
+                            )}
+                            {/*  */}
                           </a>
                         </li>
                       );
@@ -154,6 +182,7 @@ function CreateProducts() {
                       setchosseCate([...chosseCate]);
                       setlistCate(!listCate);
                     }}
+                    className={cx(chosseCate.length == 3 ? 'susscess' : '')}
                   >
                     <span>Xác nhận</span>
                   </button>
@@ -177,7 +206,7 @@ function CreateProducts() {
       <div className={cx('content')}>
         <div className={cx('left')}>
           <BasicInfor />
-          {chosseCate.length != 0 ? (
+          {chosseCate.length == 3 ? (
             <>
               <DetailInfor madm1={chosseCate[0].dm1} />
               <div className={cx('ship')}>

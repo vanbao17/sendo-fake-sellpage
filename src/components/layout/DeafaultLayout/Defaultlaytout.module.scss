@@ -29,5 +29,17 @@ html *::-webkit-scrollbar-track {
 }
 .wrappContent {
   position: absolute;
+  top: 100px;
   margin-left: 50px;
+}
+.wrapper {
+  position: relative;
+}
+.wrapper_BlackPlace {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(15, 30, 41, 0.5);
+  z-index: 950;
 }
