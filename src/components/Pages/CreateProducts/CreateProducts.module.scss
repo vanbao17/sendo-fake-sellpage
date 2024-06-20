@@ -332,3 +332,34 @@
   background-color: #ee2624;
   color: #fff;
 }
+.wrapper_action_publicProduct {
+  width: 100%;
+  padding: 24px;
+  background-color: #fff;
+  margin-top: 12px;
+  display: flex;
+  .process {
+    width: 61%;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 14px;
+  }
+  .process_input {
+    width: 60%;
+    background-color: #e7e8ea;
+    height: 8px;
+    border-radius: 4px;
+  }
+  .buttons .btn {
+    padding: 11px 14px;
+    font-size: 13px;
+    margin-left: 10px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+  .buttons .btn.action {
+    background-color: #ee2624;
+    color: #fff;
+  }
+}

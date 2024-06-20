@@ -25,27 +25,30 @@ function InputForm({
   search,
   unit,
   onSelectDropBox,
+  keyText,
+  onHandleBasicInfor,
 }) {
   const classes = cx(
     classname ?? '',
     'input',
-    icon != null ? 'text-indent' : '',
+    icon !== null ? 'text-indent' : '',
   );
   const [showTippy, setshowTippy] = useState(false);
   const [valueDropbox, setvalueDropbox] = useState(
-    // item.value != undefined ? item.value : item,
-    tippyData != undefined
-      ? tippyData[0].value != undefined
+    // item.value !== undefined ? item.value : item,
+    tippyData !== undefined
+      ? tippyData[0].value !== undefined
         ? tippyData[0].value
         : tippyData[0]
       : '',
   );
   const divRef = useRef();
   const handelCallback = (e) => {
-    onCallback(e.target.value);
+    // onCallback(e.target.value);
+    onHandleBasicInfor({key: keyText, value: e.target.value});
   };
   const handleSelected = (data) => {
-    onSelectDropBox(data);
+    onSelectDropBox({key: keyText, value: data});
   };
   return (
     <div className={cx('wrapper', classesWrapper, classname)}>
@@ -66,18 +69,17 @@ function InputForm({
                       <li
                         key={index}
                         onClick={() => {
-                          //handleSelected(item.value);
-                          onSelectDropBox(item);
+                          handleSelected(item.attribute_id);
                           setvalueDropbox(
-                            item.value != undefined ? item.value : item,
+                            item.value !== undefined ? item.value : item,
                           );
                           setshowTippy(!showTippy);
                           divRef.current.innerHtml =
-                            item.value != undefined ? item.value : item;
+                            item.value !== undefined ? item.value : item;
                         }}
                       >
                         <span>
-                          {item.value != undefined ? item.value : item}
+                          {item.value !== undefined ? item.value : item}
                         </span>
                       </li>
                     );
@@ -98,7 +100,7 @@ function InputForm({
                 className={cx(
                   'cbb',
                   showTippy == true ? 'shadowBox' : '',
-                  icon != null ? 'text-indent' : '',
+                  icon !== null ? 'text-indent' : '',
                 )}
               >
                 {valueDropbox}
@@ -114,7 +116,7 @@ function InputForm({
           <form>
             {icon}
             <input
-              onChange={onCallback ? handelCallback : null}
+              onChange={handelCallback}
               id={name}
               name={name}
               type={type ?? 'text'}

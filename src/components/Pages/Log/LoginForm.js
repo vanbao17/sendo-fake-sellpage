@@ -5,12 +5,12 @@ import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {useEffect, useState, useRef, useContext} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {Context} from '../../../store/Context';
-
+import Cookies from 'js-cookie';
 const cx = classNames.bind(styles);
 function LoginForm() {
   const [showPass, setshowPasss] = useState(false);
   const [valueInput, setvalueInput] = useState({mail: NaN, pass: NaN});
-  const [data, setdata] = useState([]);
+  const [dataShop, setdataShop] = useState();
   let errMail = true;
   let errPass = true;
   valueInput.mail.length < 1 ? (errMail = false) : (errMail = true);
@@ -19,17 +19,8 @@ function LoginForm() {
   const refPhone = useRef();
   const refPass = useRef();
   const {phoneUser, setphoneUser} = useContext(Context);
+
   const checkAccount = () => {
-    setvalueInput({mail: refPhone.current.value, pass: refPass.current.value});
-  };
-  if (data.length != 0) {
-    const filData = data.filter((item) => item.phone == valueInput.mail);
-    if (filData.length == 1) {
-      setphoneUser(refPhone.current.value);
-      navigate('/tao-shop');
-    }
-  }
-  useEffect(() => {
     const options = {
       method: 'POST',
       headers: {
@@ -39,11 +30,131 @@ function LoginForm() {
     };
     fetch('http://localhost:3001/api/v1/get-shop', options)
       .then((response) => response.json())
-      .then((dt) => setdata(dt))
+      .then((dt) => {
+        if (dt.length !== 0) {
+          const inforAcc = dt[0];
+          sessionStorage.setItem('phone', inforAcc.phone);
+          if (
+            inforAcc.phone == refPhone.current.value &&
+            inforAcc.password == refPass.current.value
+          ) {
+            const optionsgetshop = {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({id: inforAcc.idShop}),
+            };
+            fetch(
+              `http://localhost:3001/api/v1/get-shopSendmail`,
+              optionsgetshop,
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.length !== 0) {
+                  const newData = data.filter(
+                    (it) => it.idShop == inforAcc.idShop,
+                  );
+                  if (newData.length !== 0) {
+                    navigate('/bang-tin');
+                  }
+                } else {
+                  fetch(
+                    `http://localhost:3001/api/v1/get-shopSendo`,
+                    optionsgetshop,
+                  )
+                    .then((response) => response.json())
+                    .then((data1) => {
+                      if (data1.length !== 0) {
+                        const newData1 = data1.filter(
+                          (it1) => it1.idShop == inforAcc.idShop,
+                        );
+                        if (newData1.length !== 0) {
+                          navigate('/bang-tin');
+                        }
+                      } else {
+                        navigate('/tao-shop', {state: {dt: inforAcc.idShop}});
+                      }
+                    });
+                }
+              });
+          } else {
+            alert('sai mat khau');
+          }
+        } else {
+          // navigate('/tao-shop', {state: {dt: inforAcc.idShop}});
+        }
+      })
       .catch((err) => {
         if (err) throw err;
       });
-  }, [valueInput]);
+
+    setvalueInput({mail: refPhone.current.value, pass: refPass.current.value});
+  };
+  // if (dataShop.length !== 0) {
+  //   const filData = dataShop.filter((item) => item.phone == valueInput.mail);
+  //   if (filData.length == 1) {
+  //     Cookies.set('phone', refPhone.current.value, {expires: 7});
+  //     navigate('/tao-shop', {state: {dt: dataShop[0].idShop}});
+  //   }
+  // }
+
+  // if (dataSendo.length == 0 && dataSenmail.length !== 0) {
+  //   navigate('/bang-tin');
+  // } else {
+  //   navigate('/bang-tin');
+  // }
+  // if (dataSendo.length == 0 && dataSenmail.length == 0) {
+  //   navigate('/tao-shop');
+  // }
+
+  // useEffect(() => {
+  //   if (dataShop !== undefined) {
+  //     if (
+  //       dataShop.phone == refPhone.current.value &&
+  //       dataShop.password == refPass.current.value
+  //     ) {
+  //       const options = {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({id: dataShop[0].idShop}),
+  //       };
+  //       fetch(`http://localhost:3001/api/v1/get-shopSendmail`, options)
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           if (data.length !== 0) {
+  //             const newData = data.filter(
+  //               (it) => it.idShop == dataShop[0].idShop,
+  //             );
+  //             if (newData.length !== 0) {
+  //               navigate('/bang-tin');
+  //             }
+  //           } else {
+  //             fetch(`http://localhost:3001/api/v1/get-shopSendo`, options)
+  //               .then((response) => response.json())
+  //               .then((data1) => {
+  //                 if (data1.length !== 0) {
+  //                   const newData1 = data1.filter(
+  //                     (it1) => it1.idShop == dataShop[0].idShop,
+  //                   );
+  //                   if (newData1.length !== 0) {
+  //                     navigate('/bang-tin');
+  //                   }
+  //                 } else {
+  //                   navigate('/tao-shop');
+  //                 }
+  //               });
+  //           }
+  //         });
+  //     } else {
+  //       alert('sai mat khau');
+  //     }
+  //   }
+  // }, []);
+
+  // useEffect(() => {}, [valueInput]);
   return (
     <form method="GET">
       <div className={cx('mailUser')}>
@@ -116,14 +227,13 @@ function LoginForm() {
         <span></span>
         <a href="#">Quên mật khẩu</a>
       </div>
-      <div className={cx('btnlogin')}>
-        <span
-          onClick={() => {
-            checkAccount();
-          }}
-        >
-          Đăng nhập
-        </span>
+      <div
+        className={cx('btnlogin')}
+        onClick={() => {
+          checkAccount();
+        }}
+      >
+        <span>Đăng nhập</span>
       </div>
       <span className={cx('btnTo', 'btnToSignIn')}>
         Bạn chưa có tài khoản ? <a href="#">Đăng ký ngay </a>

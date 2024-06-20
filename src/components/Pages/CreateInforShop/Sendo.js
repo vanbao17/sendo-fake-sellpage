@@ -5,11 +5,11 @@ import {useContext, useEffect, useState} from 'react';
 import {Context} from '../../../store/Context';
 const cx = classNames.bind(styles);
 
-function Sendo({onSendData}) {
+function Sendo({onSendData, idshop, type}) {
   const [inputdata, setinputdata] = useState('');
   const [dataSendo, setdataSendo] = useState({
     type: 'shopSendo',
-    idshop: 1,
+    idshop: idshop,
     name: null,
     email: null,
     cccd: null,
@@ -18,6 +18,11 @@ function Sendo({onSendData}) {
   useEffect(() => {
     onSendData(dataSendo);
   }, [dataSendo]);
+  useEffect(() => {
+    if (idshop !== undefined) {
+      setdataSendo({...dataSendo, idshop: idshop});
+    }
+  }, [idshop]);
   return (
     <div>
       <form method="" action="" className={cx('inforShop')}>

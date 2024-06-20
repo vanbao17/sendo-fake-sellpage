@@ -4,11 +4,11 @@ import {useContext, useEffect, useState} from 'react';
 import InputForm from '../../layout/components/InputForm/InputForm';
 import {Context} from '../../../store/Context';
 const cx = classNames.bind(styles);
-function SenMail({onSendData}) {
+function SenMail({onSendData, idshop, type}) {
   const [inputdata, setinputdata] = useState('');
   const [dataSenmail, setdataSenmail] = useState({
     type: 'shopSendmail',
-    idshop: 1,
+    idshop: idshop,
     name: null,
     email: null,
     nameshopowner: null,
@@ -133,7 +133,6 @@ function SenMail({onSendData}) {
           name={'businesSlicenseCode'}
           text="Loại thương hiệu"
           onSelectDropBox={(data) => {
-            console.log(data);
             setdataSenmail({
               ...dataSenmail,
               brandtype: data,

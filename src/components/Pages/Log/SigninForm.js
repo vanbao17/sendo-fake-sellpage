@@ -23,11 +23,10 @@ function SigninForm() {
   const navigate = useNavigate();
   const refInputPass = useRef();
   const refPhoneNum = useRef();
-
   useEffect(() => {
     if (phoneNumber.length >= 1) refPhoneNum.current.disabled = false;
     else refPhoneNum.current.disabled = true;
-  });
+  }, []);
   const signin = () => {
     try {
       const recaptchaVerifier = new RecaptchaVerifier(
@@ -64,7 +63,11 @@ function SigninForm() {
     };
     fetch('http://localhost:3001/api/v1/get-shop', options)
       .then((response) => response.json())
-      .then((dt) => setdata(dt))
+      .then((dt) => {
+        if (dt.length !== 0) {
+          setdata(dt);
+        }
+      })
       .catch((err) => {
         if (err) throw err;
       });
@@ -86,10 +89,8 @@ function SigninForm() {
         };
         fetch('http://localhost:3001/api/v1/create-shop', options)
           .then((response) => {
-            console.log(response);
             if (response.status == 200) {
-              setphoneUser(phoneNumber);
-              navigate('/tao-shop');
+              alert('Đăng ký thành công :)))');
             }
           })
           .catch((err) => {
@@ -99,9 +100,9 @@ function SigninForm() {
         alert('trung so dien thoai roi');
       }
     }
-  }, [step]);
+  }, [phoneNumber]);
   const ValidateOtp = () => {
-    setstate(!state);
+    // setstate(!state);
     if (otp === null) return;
     result
       .confirm(otp)

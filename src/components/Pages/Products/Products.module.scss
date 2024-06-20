@@ -153,3 +153,35 @@
     justify-content: end;
   }
 }
+.list_product {
+  padding: 12px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  img {
+    width: 40%;
+  }
+  button {
+    padding: 6px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+}
+th,
+td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+th {
+  background-color: #f4f4f4;
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.btn-trash.action {
+  background-color: red;
+  color: #fff;
+}

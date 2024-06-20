@@ -10,7 +10,7 @@ function ListItemTarget({data}) {
           <ItemTarget
             key={index}
             text={item.title}
-            target={item.target != null ? item.target : null}
+            target={item.target !== null ? item.target : null}
             quanlity={item.quanlity}
           />
         );

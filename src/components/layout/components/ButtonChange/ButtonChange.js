@@ -3,8 +3,15 @@ import styles from './ButtonChange.module.scss';
 import {useState} from 'react';
 const cx = classNames.bind(styles);
 
-function ButtonChange({data, status}) {
-  const [changeCircle, setchangeCircle] = useState(status);
+function ButtonChange({data, status, onHandleBasicInfor, keyText}) {
+  const [changeCircle, setchangeCircle] = useState(false);
+  const handleState = (state) => {
+    if (state == true) {
+      onHandleBasicInfor({key: keyText, value: 1});
+    } else {
+      onHandleBasicInfor({key: keyText, value: 0});
+    }
+  };
   return (
     <div className={cx('wrapper')}>
       <div className={cx('container')}>
@@ -15,6 +22,7 @@ function ButtonChange({data, status}) {
           )}
           onClick={() => {
             setchangeCircle(!changeCircle);
+            handleState(!changeCircle);
           }}
         >
           <div

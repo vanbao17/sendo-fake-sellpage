@@ -10,13 +10,34 @@ import {
   faNewspaper,
 } from '@fortawesome/free-solid-svg-icons';
 import DropBox from './DropBox';
-import {useState, useContext} from 'react';
+import {useState, useContext, useEffect} from 'react';
 import {Context} from '../../../store/Context';
 import {NewsIcon, OderIcon} from '../../Icons';
 const cx = classNames.bind(styles);
 function SideBar() {
   const {hidemenu, sethidemenu} = useContext(Context);
   const {icon, seticon} = useContext(Context);
+  const [shop, setshop] = useState(null);
+  const phone = sessionStorage.getItem('phone');
+  useEffect(() => {
+    fetch('http://localhost:3001/api/v1/get-shop', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({mail: phone}),
+    })
+      .then((rs) => rs.json())
+      .then((dt) => {
+        if (dt.length != 0) {
+          setshop(dt[0]);
+          sessionStorage.setItem('shop', JSON.stringify(dt[0]));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div
@@ -27,9 +48,14 @@ function SideBar() {
       >
         <div className={cx('container')}>
           <div className={cx('infor')}>
-            <img src="https://media3.scdn.vn/img4/2020/10_21/MjjPQD0ovblQdwDzS6t0.png"></img>
+            {shop !== null && shop.imageShop != null ? (
+              <img src={shop.imageShop}></img>
+            ) : (
+              <img src="https://media3.scdn.vn/img4/2020/10_21/MjjPQD0ovblQdwDzS6t0.png"></img>
+            )}
+
             <div className={cx('nameShop')}>
-              <span>Thích thì chiều</span>
+              <span>{shop !== null ? shop.tenshop : 'Chưa có tên'}</span>
               <span></span>
             </div>
           </div>

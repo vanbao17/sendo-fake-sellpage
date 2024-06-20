@@ -8,7 +8,7 @@ function ItemTarget({text, quanlity, target}) {
       <span>{text}</span>
       <span>
         {quanlity}
-        {target != null ? '/' + target : ''}
+        {target !== null ? '/' + target : ''}
       </span>
     </li>
   );

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faBell,
@@ -30,6 +30,13 @@ const cx = classNames.bind(styles);
 
 function Header({notNav}) {
   const {menufix, setmenufix} = useContext(Context);
+  const nav = useNavigate();
+  const handleSignOut = (index) => {
+    if (index == 3) {
+      sessionStorage.clear();
+      nav('/');
+    }
+  };
   return (
     <div className={cx('wrapper')}>
       <div className={cx('nav-container-image')}>
@@ -122,6 +129,7 @@ function Header({notNav}) {
                   {path: '/shop#Event/News_Notify', name: 'Thoát'},
                 ]}
                 to="/"
+                handleFunc={handleSignOut}
                 icon={<UserIcon className={cx('icon')} />}
                 className={cx('item-menu')}
               ></ItemNav>

@@ -6,12 +6,19 @@ import logo from '../../../Assets/Logo';
 import ItemTick from './ItemTick';
 import {Link} from 'react-router-dom';
 import {useNavigate, useLocation} from 'react-router-dom';
+import {useContext, useEffect, useState} from 'react';
+import {Context} from '../../../store/Context';
 const cx = classNames.bind(styles);
 
 function TypeShop() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const idShop = location.state?.dt;
+  const {phoneUser, setphoneUser} = useContext(Context);
   const valueSendo = 'shopSendo';
   const valueSenmail = 'shopSendmail';
+
+  
   return (
     <div className={cx('wrapper')}>
       <Header notNav />

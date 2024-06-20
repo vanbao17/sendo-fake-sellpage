@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import {useNavigate} from 'react-router-dom';
 import styles from './CreateProducts.module.scss';
 import {
   CameraIcon,
@@ -27,6 +28,28 @@ function CreateProducts() {
   const [dataDm3, setdataDm3] = useState([]);
   const {blackPlace, seblackPlace} = useContext(Context);
   const {chosseCate, setchosseCate} = useContext(Context);
+  const [dataBasicInfor, setdataBasicInfor] = useState([]);
+  const [dataDetail, setdataDetail] = useState([]);
+  const [finalData, setfinalData] = useState({});
+  const nav = useNavigate();
+
+  const handleDataBasicInfor = (data) => {
+    setdataBasicInfor(data);
+  };
+  const handleDataDetail = (data) => {
+    setdataDetail(data);
+  };
+  useEffect(() => {
+    if (chosseCate.length >= 3) {
+      setfinalData({
+        ...dataBasicInfor,
+        dataDetail,
+        dm1: chosseCate[0].dm1,
+        dm2: chosseCate[1].dm2,
+        dm3: chosseCate[2].dm3,
+      });
+    }
+  }, [dataDetail, dataBasicInfor, chosseCate]);
   useEffect(() => {
     fetch('http://localhost:3001/api/v1/danhmuc1')
       .then((response) => response.json())
@@ -55,6 +78,123 @@ function CreateProducts() {
         });
     }
   }, [chosseCate[1]]);
+  const addDetailProduct = async (idProduct) => {
+    const option = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({idProduct, finalData}),
+    };
+
+    try {
+      const response = await fetch(
+        'http://localhost:3001/api/v1/addDetailProduct',
+        option,
+      );
+      if (response.status === 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      console.log(err);
+      return false; // Trả về false trong trường hợp có lỗi
+    }
+  };
+
+  const addDataAttrProduct = async (idProduct) => {
+    const option = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({idProduct, dataDetail}),
+    };
+
+    try {
+      const response = await fetch(
+        'http://localhost:3001/api/v1/createAttrProduct',
+        option,
+      );
+      if (response.status === 200) {
+        const resultDetailProduct = await addDetailProduct(idProduct);
+        return resultDetailProduct === true;
+      } else {
+        return false; // Trường hợp status không phải 200
+      }
+    } catch (err) {
+      console.log(err);
+      return false; // Trả về false trong trường hợp có lỗi
+    }
+  };
+
+  const handleCreateProduct = () => {
+    const nameProduct = finalData.name;
+    const imageProduct = finalData.imageProfile;
+    const video = finalData.video;
+    const selledQuality = finalData.quanlity;
+    const QuanlityExists = 100;
+    const status = finalData.stateProduct;
+    const priceDefault = finalData.priceDefault;
+    const priceSale = finalData.priceSale;
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+    let day = String(today.getDate()).padStart(2, '0');
+    let formattedDate = `${year}-${month}-${day}`;
+    const datePublic = formattedDate;
+    const madm1 = finalData.dm1;
+    const madm2 = finalData.dm2;
+    const madm3 = finalData.dm3;
+    const phone = sessionStorage.getItem('phone');
+    fetch('http://localhost:3001/api/v1/get-shop', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({mail: phone}),
+    })
+      .then((rs) => rs.json())
+      .then((shop) => {
+        const idShop = shop[0].idShop;
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nameProduct,
+            imageProduct,
+            video,
+            selledQuality,
+            QuanlityExists,
+            status,
+            priceDefault,
+            priceSale,
+            datePublic,
+            madm1,
+            madm2,
+            madm3,
+            idShop,
+          }),
+        };
+        fetch('http://localhost:3001/api/v1/createProduct', options)
+          .then((response1) => response1.json())
+          .then((idProduct) => {
+            const result = addDataAttrProduct(idProduct);
+            if (result) {
+              nav('/san-pham');
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className={cx('wrapper')}>
       {listCate == true ? (
@@ -65,10 +205,14 @@ function CreateProducts() {
               <span
                 onClick={() => {
                   setlistCate(!listCate);
-                  seblackPlace(!blackPlace);
                 }}
               >
-                <CloseIcon className={cx('iconClose')} />
+                <CloseIcon
+                  onClick={() => {
+                    seblackPlace(!blackPlace);
+                  }}
+                  className={cx('iconClose')}
+                />
               </span>
             </div>
             <div className={cx('containContent')}>
@@ -205,10 +349,13 @@ function CreateProducts() {
       </div>
       <div className={cx('content')}>
         <div className={cx('left')}>
-          <BasicInfor />
+          <BasicInfor submitData={handleDataBasicInfor} />
           {chosseCate.length == 3 ? (
             <>
-              <DetailInfor madm1={chosseCate[0].dm1} />
+              <DetailInfor
+                madm1={chosseCate[0].dm1}
+                submitData={handleDataDetail}
+              />
               <div className={cx('ship')}>
                 <div className={cx('title')}>Vận chuyển</div>
                 <form className={cx('choose')}>
@@ -217,6 +364,27 @@ function CreateProducts() {
                 </form>
               </div>
               <SEOInfor />
+              <div className={cx('wrapper_action_publicProduct')}>
+                <div className={cx('process')}>
+                  <span>Tổng điểm SEO</span>
+                  <div className={cx('process_input')}></div>
+                  <span>0/115</span>
+                </div>
+                <div className={cx('buttons')}>
+                  <button className={cx('btn')}>
+                    <span>Lưu nháp</span>
+                  </button>
+                  <button className={cx('btn')}>
+                    <span>Đăng</span>
+                  </button>
+                  <button
+                    className={cx('btn', 'action')}
+                    onClick={handleCreateProduct}
+                  >
+                    <span>Đăng và tạo tiếp</span>
+                  </button>
+                </div>
+              </div>
             </>
           ) : (
             <></>

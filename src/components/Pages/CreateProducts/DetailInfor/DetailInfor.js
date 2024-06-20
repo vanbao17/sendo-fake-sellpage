@@ -7,7 +7,7 @@ import InputContainer from '../InputContainer';
 import DetailInforInput from './DetailInforInput/DetailInforInput';
 import {AddIcon, CateIcon, CloseIcon} from '../../../Icons';
 const cx = classNames.bind(styles);
-function DetailInfor({madm1}) {
+function DetailInfor({madm1, submitData}) {
   const [dataAttribute, setdataAttribute] = useState([]);
   const [dataAttributeValues, setdataAttributeValues] = useState([]);
   const [datachose, setdatachose] = useState([]);
@@ -15,6 +15,49 @@ function DetailInfor({madm1}) {
     name: '',
     data: [],
   });
+  const [finalData, setfinalData] = useState({
+    'Phương thức vận chuyển': '',
+    'Loại shop': null,
+    'Ưu đãi': null,
+    'Phong cách': null,
+    'Họa tiết': null,
+    'Chất liệu vãi': null,
+    'Chiều dài tay áo': null,
+    'Chuyên dài váy': null,
+    'Kích thước': [],
+    'Kiểu cổ áo': null,
+    'Đơn vị': [],
+    'Khoản giá': null,
+    'Đánh giá': null,
+    'Màu sắc': [],
+  });
+  const [allValues, setAllValues] = useState([]);
+  useEffect(() => {
+    const values = Object.values(finalData);
+    setAllValues(values);
+  }, [finalData]);
+  useEffect(() => {
+    submitData(allValues);
+  }, [finalData]);
+  const handleDataFinal = (data) => {
+    const updatedFinalData = {...finalData};
+    if (Array.isArray(finalData[data.key])) {
+      const check = updatedFinalData[data.key].find(
+        (item) => item.attribute_value_id === data.value.attribute_value_id,
+      );
+      if (check == undefined) {
+        updatedFinalData[data.key] = [...finalData[data.key], data.value];
+      } else {
+        const filterdata = updatedFinalData[data.key].filter(
+          (item) => item.attribute_value_id !== data.value.attribute_value_id,
+        );
+        updatedFinalData[data.key] = [...filterdata];
+      }
+    } else {
+      updatedFinalData[data.key] = data.value;
+    }
+    setfinalData(updatedFinalData);
+  };
   const refInputName = useRef(null);
   const refInputData = useRef(null);
   useEffect(() => {
@@ -36,13 +79,13 @@ function DetailInfor({madm1}) {
   }, []);
   const handleChoseData = (item) => {
     const data = datachose.filter(
-      (it) => it.attribute_value_id == item.attribute_value_id,
+      (it) => it.value.attribute_value_id == item.value.attribute_value_id,
     );
     if (data.length == 0) {
       setdatachose([...datachose, item]);
     } else {
       const newData = datachose.filter(
-        (it) => it.attribute_value_id != item.attribute_value_id,
+        (it) => it.value.attribute_value_id !== item.value.attribute_value_id,
       );
       setdatachose(newData);
     }
@@ -52,7 +95,7 @@ function DetailInfor({madm1}) {
   };
   const handleAddAttribute = () => {
     let data = refInputData.current.value;
-    if (refInputName.current != null) {
+    if (refInputName.current !== null) {
       let name = refInputName.current.value;
       setaddAttribute({
         name: name,
@@ -70,7 +113,7 @@ function DetailInfor({madm1}) {
     refInputData.current.value = '';
   };
   const handleDeleteDataAtt = (item) => {
-    const newData = addAttribute.data.filter((it) => it != item);
+    const newData = addAttribute.data.filter((it) => it !== item);
     setaddAttribute({name: addAttribute.name, data: newData});
   };
   return (
@@ -94,10 +137,17 @@ function DetailInfor({madm1}) {
                   onDeleteData={handleDeleteData}
                   onClick={handleChoseData}
                   dataChose={data}
+                  keyText={item.attribute_name}
+                  onSelectDropBox={handleDataFinal}
                 />
               ) : (
                 <div className={cx('wrapperInput')}>
-                  <InputForm classname={cx('tag')} tippyData={data}></InputForm>
+                  <InputForm
+                    keyText={item.attribute_name}
+                    onSelectDropBox={handleDataFinal}
+                    classname={cx('tag')}
+                    tippyData={data}
+                  ></InputForm>
                 </div>
               )}
             </InputContainer>

@@ -23,12 +23,101 @@ import {
   TrashIcon,
 } from '../../Icons';
 import {Context} from '../../../store/Context';
+import ItemProduct from './ItemProduct';
 const cx = classNames.bind(styles);
 function Products() {
   const {hidemenu, sethidemenu} = useContext(Context);
   const [filterProduct, setfilterProduct] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [productDeletes, setproductDeletes] = useState([]);
+  const shop = JSON.parse(sessionStorage.getItem('shop'));
   const handleClickFilter = () => {
     setfilterProduct(!filterProduct);
+  };
+  useEffect(() => {
+    fetch('http://localhost:3001/api/v1/prodShop/' + shop.idShop)
+      .then((rs) => rs.json())
+      .then((dt) => {
+        if (dt.length != 0) {
+          setProducts(dt);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  const handleChecked = (index) => {
+    const check = productDeletes.find((item) => item === index);
+    if (check) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  const handleAddProductDelete = (index) => {
+    const check = productDeletes.find((item) => item === index);
+    if (!check) {
+      setproductDeletes([...productDeletes, index]);
+    } else {
+      const filter = productDeletes.filter((item) => item != index);
+      setproductDeletes(filter);
+    }
+  };
+  const handleDeleteProduct = async () => {
+    const idProduct = productDeletes;
+    if (idProduct.length != 0) {
+      try {
+        const deleteValueAttrResponse = await fetch(
+          'http://localhost:3001/api/v1/deleteValueAttr',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({idProduct}),
+          },
+        );
+
+        if (deleteValueAttrResponse.status === 200) {
+          const deleteDetailProductResponse = await fetch(
+            'http://localhost:3001/api/v1/deleteDetailProduct',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({idProduct}),
+            },
+          );
+
+          if (deleteDetailProductResponse.status === 200) {
+            const deleteProductResponse = await fetch(
+              'http://localhost:3001/api/v1/deleteProduct',
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({idProduct}),
+              },
+            );
+
+            if (deleteProductResponse.status === 200) {
+              const prodShopResponse = await fetch(
+                'http://localhost:3001/api/v1/prodShop/' + shop.idShop,
+              );
+              const data = await prodShopResponse.json();
+
+              if (data.length !== 0) {
+                setProducts(data);
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
   return (
     <div className={cx('wrapper')}>
@@ -145,7 +234,14 @@ function Products() {
               <div className={cx('btn-addProduct')}>
                 <Link to={'/san-pham/dang-san-pham'}>Thêm sản phẩm </Link>
               </div>
-              <div className={cx('btn-trash', 'btn')}>
+              <div
+                className={cx(
+                  'btn-trash',
+                  'btn',
+                  productDeletes.length != 0 ? 'action' : '',
+                )}
+                onClick={handleDeleteProduct}
+              >
                 <TrashIcon className={cx('iconTrash')} />
               </div>
             </div>
@@ -154,22 +250,55 @@ function Products() {
           )}
         </div>
         <div className={cx('listProduct')}>
-          <div className={cx('products')}></div>
-          <div className={cx('noneProduct')}>
-            <div className={cx('imageNonePd')}>
-              <img src="https://media3.scdn.vn/img4/2020/07_03/qFi8EAsMzCHKBzY5kDsz.png"></img>
+          {products.length != 0 ? (
+            <div className={cx('list_product')}>
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Hình sản phẩm</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Thông tin sản phẩm</th>
+                    <th>Gía gốc</th>
+                    <th>Gía KM</th>
+                    <th>Thời gian khuyến mãi</th>
+                    <th>Số lượng</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product, index) => {
+                    return (
+                      <ItemProduct
+                        // check={handleChecked(product.idProduct)}
+                        onHandleAddProdDelete={handleAddProductDelete}
+                        dataDelete={productDeletes}
+                        key={index}
+                        data={product}
+                      />
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-            <p>Không có sản phẩm</p>
-            <span>Bạn không có sản phẩm nào.</span>
-            <Link
-              onClick={() => {
-                sethidemenu(!hidemenu);
-              }}
-              to={'/san-pham/dang-san-pham'}
-            >
-              Thêm sản phẩm
-            </Link>
-          </div>
+          ) : (
+            <div className={cx('noneProduct')}>
+              <div className={cx('imageNonePd')}>
+                <img src="https://media3.scdn.vn/img4/2020/07_03/qFi8EAsMzCHKBzY5kDsz.png"></img>
+              </div>
+              <p>Không có sản phẩm</p>
+              <span>Bạn không có sản phẩm nào.</span>
+              <Link
+                onClick={() => {
+                  sethidemenu(!hidemenu);
+                }}
+                to={'/san-pham/dang-san-pham'}
+              >
+                Thêm sản phẩm
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

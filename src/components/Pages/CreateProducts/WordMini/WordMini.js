@@ -4,9 +4,10 @@ import styles from './WordMini.module.scss';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 const cx = classNames.bind(styles);
-function WordMini() {
+function WordMini({onHandleBasicInfor, keyText}) {
   const [WordMiniHtml, setWordMiniHtml] = useState('');
   function handleChange(html) {
+    onHandleBasicInfor({key: keyText, value: html});
     setWordMiniHtml(html);
   }
   const editorStyle = {

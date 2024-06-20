@@ -13,6 +13,8 @@ function DetailInforInput({
   onDeleteData,
   listDataChose,
   idAttribute,
+  onSelectDropBox,
+  keyText,
 }) {
   const [stateDropdown, setstateDropdown] = useState(false);
   const [dataListChose, setdataListChose] = useState([...listDataChose]);
@@ -21,16 +23,17 @@ function DetailInforInput({
     setdataListChose([...listDataChose]);
   }, [listDataChose]);
   const handleSendData = (item) => {
-    onClick(item);
+    onClick({key: keyText, value: item});
+    onSelectDropBox({key: keyText, value: item});
   };
   const handleDeleteChose = (idItem) => {
     const newData = listDataChose.filter(
-      (it) => it.attribute_value_id != idItem,
+      (it) => it.attribute_value_id !== idItem,
     );
     onDeleteData(newData);
   };
   const handleOnchangeInput = (e) => {
-    if (e.target.value.length != 0) {
+    if (e.target.value.length !== 0) {
       const dataForSearch = dataChose.filter((it) =>
         it.value.startsWith(e.target.value),
       );
@@ -73,7 +76,8 @@ function DetailInforInput({
                         checked={
                           dataListChose.filter(
                             (it) =>
-                              it.attribute_value_id == item.attribute_value_id,
+                              it.value.attribute_value_id ==
+                              item.attribute_value_id,
                           ).length == 0
                             ? false
                             : true
