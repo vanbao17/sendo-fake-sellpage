@@ -82,7 +82,9 @@ function SideBar() {
           <div className={cx('wranning')}>Bạn chưa liên kết Ví SenPay</div>
           <div className={cx('shop')}>
             <h3>GIAN HÀNG</h3>
-            <DropBox dropData={['Danh sách đơn hàng']}>
+            <DropBox
+              dropData={[{name: 'Danh sách đơn hàng', path: '/don-hang'}]}
+            >
               <span>
                 <OderIcon className={cx('icon')} />
                 Đơn hàng

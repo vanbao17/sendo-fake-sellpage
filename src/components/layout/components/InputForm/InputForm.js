@@ -42,7 +42,6 @@ function InputForm({
         : tippyData[0]
       : '',
   );
-  console.log(tippyData);
   const divRef = useRef();
   const handelCallback = (e) => {
     if (onHandleBasicInfor !== null) {

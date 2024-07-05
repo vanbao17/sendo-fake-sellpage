@@ -579,3 +579,19 @@ export const CloseIcon = ({width = '24px', height = '24px', className}) => (
     ></path>
   </svg>
 );
+export const OclockIcon = ({width = '24px', height = '24px', className}) => (
+  <svg
+    width={width}
+    height={height}
+    className={className}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+  >
+    <path
+      d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1Zm0 2a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm1 3v5h4v2h-6V6h2Z"
+      fill="currentColor"
+      fillRule="nonzero"
+    ></path>
+  </svg>
+);
