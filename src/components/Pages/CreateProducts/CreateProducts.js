@@ -51,7 +51,7 @@ function CreateProducts() {
     }
   }, [dataDetail, dataBasicInfor, chosseCate]);
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/danhmuc1')
+    fetch('https://sdvanbao17.id.vn/api/v1/danhmuc1')
       .then((response) => response.json())
       .then((data) => setdataDm1(data))
       .catch((err) => {
@@ -60,7 +60,7 @@ function CreateProducts() {
   }, []);
   useEffect(() => {
     if (chosseCate[0] != null) {
-      fetch('http://localhost:3001/api/v1/danhmuc2/' + chosseCate[0].dm1)
+      fetch('https://sdvanbao17.id.vn/api/v1/danhmuc2/' + chosseCate[0].dm1)
         .then((response) => response.json())
         .then((data) => setdataDm2(data))
         .catch((err) => {
@@ -70,7 +70,9 @@ function CreateProducts() {
   }, [chosseCate[0]]);
   useEffect(() => {
     if (chosseCate[1] != null) {
-      fetch('http://localhost:3001/api/v1/danhmuc3withdm2/' + chosseCate[1].dm2)
+      fetch(
+        'https://sdvanbao17.id.vn/api/v1/danhmuc3withdm2/' + chosseCate[1].dm2,
+      )
         .then((response) => response.json())
         .then((data) => setdataDm3(data))
         .catch((err) => {
@@ -89,7 +91,7 @@ function CreateProducts() {
 
     try {
       const response = await fetch(
-        'http://localhost:3001/api/v1/addDetailProduct',
+        'https://sdvanbao17.id.vn/api/v1/addDetailProduct',
         option,
       );
       if (response.status === 200) {
@@ -114,7 +116,7 @@ function CreateProducts() {
 
     try {
       const response = await fetch(
-        'http://localhost:3001/api/v1/createAttrProduct',
+        'https://sdvanbao17.id.vn/api/v1/createAttrProduct',
         option,
       );
       if (response.status === 200) {
@@ -148,7 +150,7 @@ function CreateProducts() {
     const madm2 = finalData.dm2;
     const madm3 = finalData.dm3;
     const phone = sessionStorage.getItem('phone');
-    fetch('http://localhost:3001/api/v1/get-shop', {
+    fetch('https://sdvanbao17.id.vn/api/v1/get-shop', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -179,7 +181,7 @@ function CreateProducts() {
             idShop,
           }),
         };
-        fetch('http://localhost:3001/api/v1/createProduct', options)
+        fetch('https://sdvanbao17.id.vn/api/v1/createProduct', options)
           .then((response1) => response1.json())
           .then((idProduct) => {
             const result = addDataAttrProduct(idProduct);

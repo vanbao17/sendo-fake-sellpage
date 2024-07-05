@@ -42,10 +42,14 @@ function InputForm({
         : tippyData[0]
       : '',
   );
+  console.log(tippyData);
   const divRef = useRef();
   const handelCallback = (e) => {
-    // onCallback(e.target.value);
-    onHandleBasicInfor({key: keyText, value: e.target.value});
+    if (onHandleBasicInfor !== null) {
+      onHandleBasicInfor({key: keyText, value: e.target.value});
+    } else {
+      onCallback(e.target.value);
+    }
   };
   const handleSelected = (data) => {
     onSelectDropBox({key: keyText, value: data});

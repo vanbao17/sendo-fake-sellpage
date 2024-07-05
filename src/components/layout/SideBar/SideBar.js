@@ -20,7 +20,7 @@ function SideBar() {
   const [shop, setshop] = useState(null);
   const phone = sessionStorage.getItem('phone');
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/get-shop', {
+    fetch('https://sdvanbao17.id.vn/api/v1/get-shop', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

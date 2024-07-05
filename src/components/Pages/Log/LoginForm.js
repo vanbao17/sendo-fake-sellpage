@@ -28,7 +28,7 @@ function LoginForm() {
       },
       body: JSON.stringify(valueInput),
     };
-    fetch('http://localhost:3001/api/v1/get-shop', options)
+    fetch('https://sdvanbao17.id.vn/api/v1/get-shop', options)
       .then((response) => response.json())
       .then((dt) => {
         if (dt.length !== 0) {
@@ -46,7 +46,7 @@ function LoginForm() {
               body: JSON.stringify({id: inforAcc.idShop}),
             };
             fetch(
-              `http://localhost:3001/api/v1/get-shopSendmail`,
+              `https://sdvanbao17.id.vn/api/v1/get-shopSendmail`,
               optionsgetshop,
             )
               .then((response) => response.json())
@@ -60,7 +60,7 @@ function LoginForm() {
                   }
                 } else {
                   fetch(
-                    `http://localhost:3001/api/v1/get-shopSendo`,
+                    `https://sdvanbao17.id.vn/api/v1/get-shopSendo`,
                     optionsgetshop,
                   )
                     .then((response) => response.json())
@@ -121,7 +121,7 @@ function LoginForm() {
   //         },
   //         body: JSON.stringify({id: dataShop[0].idShop}),
   //       };
-  //       fetch(`http://localhost:3001/api/v1/get-shopSendmail`, options)
+  //       fetch(`https://sdvanbao17.id.vn/api/v1/get-shopSendmail`, options)
   //         .then((response) => response.json())
   //         .then((data) => {
   //           if (data.length !== 0) {
@@ -132,7 +132,7 @@ function LoginForm() {
   //               navigate('/bang-tin');
   //             }
   //           } else {
-  //             fetch(`http://localhost:3001/api/v1/get-shopSendo`, options)
+  //             fetch(`https://sdvanbao17.id.vn/api/v1/get-shopSendo`, options)
   //               .then((response) => response.json())
   //               .then((data1) => {
   //                 if (data1.length !== 0) {

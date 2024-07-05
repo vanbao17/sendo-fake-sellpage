@@ -35,7 +35,7 @@ function Products() {
     setfilterProduct(!filterProduct);
   };
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/prodShop/' + shop.idShop)
+    fetch('https://sdvanbao17.id.vn/api/v1/prodShop/' + shop.idShop)
       .then((rs) => rs.json())
       .then((dt) => {
         if (dt.length != 0) {
@@ -68,7 +68,7 @@ function Products() {
     if (idProduct.length != 0) {
       try {
         const deleteValueAttrResponse = await fetch(
-          'http://localhost:3001/api/v1/deleteValueAttr',
+          'https://sdvanbao17.id.vn/api/v1/deleteValueAttr',
           {
             method: 'POST',
             headers: {
@@ -80,7 +80,7 @@ function Products() {
 
         if (deleteValueAttrResponse.status === 200) {
           const deleteDetailProductResponse = await fetch(
-            'http://localhost:3001/api/v1/deleteDetailProduct',
+            'https://sdvanbao17.id.vn/api/v1/deleteDetailProduct',
             {
               method: 'POST',
               headers: {
@@ -92,7 +92,7 @@ function Products() {
 
           if (deleteDetailProductResponse.status === 200) {
             const deleteProductResponse = await fetch(
-              'http://localhost:3001/api/v1/deleteProduct',
+              'https://sdvanbao17.id.vn/api/v1/deleteProduct',
               {
                 method: 'POST',
                 headers: {
@@ -104,7 +104,7 @@ function Products() {
 
             if (deleteProductResponse.status === 200) {
               const prodShopResponse = await fetch(
-                'http://localhost:3001/api/v1/prodShop/' + shop.idShop,
+                'https://sdvanbao17.id.vn/api/v1/prodShop/' + shop.idShop,
               );
               const data = await prodShopResponse.json();
 

@@ -30,7 +30,7 @@ function CreateInforShop() {
       },
       body: JSON.stringify({mail: phone, pass: null}),
     };
-    fetch('http://localhost:3001/api/v1/get-shop', options)
+    fetch('https://sdvanbao17.id.vn/api/v1/get-shop', options)
       .then((response) => response.json())
       .then((data) => {
         if (data.length !== 0) {
@@ -49,7 +49,7 @@ function CreateInforShop() {
       },
       body: JSON.stringify(dataShop),
     };
-    fetch('http://localhost:3001/api/v1/create-type-shop', options)
+    fetch('https://sdvanbao17.id.vn/api/v1/create-type-shop', options)
       .then((response) => {
         if (response.status == 200) {
           navigate('/bang-tin');

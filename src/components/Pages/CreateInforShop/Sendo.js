@@ -34,6 +34,7 @@ function Sendo({onSendData, idshop, type}) {
               name: data,
             });
           }}
+          onHandleBasicInfor={null}
           text="Tên Shop"
           placeholder={'Gồm chữ cái A-Z, chữ số 0-9, không gồm ký tự đặc biệt'}
         />
@@ -43,6 +44,7 @@ function Sendo({onSendData, idshop, type}) {
           text="Đường dẫn (URL) của Shop trên trang sendo.vn"
           placeholder={'Gồm chữ cái A-Z, chữ số 0-9, không gồm ký tự đặc biệt'}
           value={'undefined/shop/' + inputdata}
+          onHandleBasicInfor={null}
         />
         <InputForm
           name={'emailShop'}
@@ -53,6 +55,7 @@ function Sendo({onSendData, idshop, type}) {
             });
           }}
           text="Email"
+          onHandleBasicInfor={null}
           placeholder={'Dùng để nhận thông tin từ Sendo'}
         />
       </form>
@@ -70,6 +73,7 @@ function Sendo({onSendData, idshop, type}) {
               cccd: data,
             });
           }}
+          onHandleBasicInfor={null}
           placeholder={'Nhập số CMND/CCCD của chủ Shop'}
         />
         <InputForm
@@ -81,6 +85,7 @@ function Sendo({onSendData, idshop, type}) {
               taxcode: data,
             });
           }}
+          onHandleBasicInfor={null}
           placeholder={'Nhập Mã số thuế Cá nhân/Doanh nghiệp'}
         />
       </form>

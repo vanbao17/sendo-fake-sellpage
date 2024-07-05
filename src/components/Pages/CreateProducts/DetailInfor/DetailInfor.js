@@ -61,7 +61,7 @@ function DetailInfor({madm1, submitData}) {
   const refInputName = useRef(null);
   const refInputData = useRef(null);
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/tim-kiem/' + madm1)
+    fetch('https://sdvanbao17.id.vn/api/v1/tim-kiem/' + madm1)
       .then((response) => response.json())
       .then((data) => setdataAttribute(data))
       .catch((err) => {
@@ -70,7 +70,7 @@ function DetailInfor({madm1, submitData}) {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/getAllAttributeValues')
+    fetch('https://sdvanbao17.id.vn/api/v1/getAllAttributeValues')
       .then((response) => response.json())
       .then((data) => setdataAttributeValues(data))
       .catch((err) => {

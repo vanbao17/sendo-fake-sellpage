@@ -61,7 +61,7 @@ function SigninForm() {
       },
       body: JSON.stringify({mail: phoneNumber, pass: ''}),
     };
-    fetch('http://localhost:3001/api/v1/get-shop', options)
+    fetch('https://sdvanbao17.id.vn/api/v1/get-shop', options)
       .then((response) => response.json())
       .then((dt) => {
         if (dt.length !== 0) {
@@ -73,7 +73,7 @@ function SigninForm() {
       });
   }, [phoneNumber]);
   useEffect(() => {
-    if (step == 'VERIFY_SUCCESS') {
+    if (step === 'VERIFY_SUCCESS') {
       const filData = data.filter((item) => item.phone == phoneNumber);
       if (filData.length == 0) {
         const acc = {
@@ -87,7 +87,7 @@ function SigninForm() {
           },
           body: JSON.stringify(acc),
         };
-        fetch('http://localhost:3001/api/v1/create-shop', options)
+        fetch('https://sdvanbao17.id.vn/api/v1/create-shop', options)
           .then((response) => {
             if (response.status == 200) {
               alert('Đăng ký thành công :)))');
@@ -102,7 +102,7 @@ function SigninForm() {
     }
   }, [phoneNumber]);
   const ValidateOtp = () => {
-    // setstate(!state);
+    setstate(!state);
     if (otp === null) return;
     result
       .confirm(otp)

@@ -32,7 +32,7 @@ function DragFile({state, title, handleUrl, handleUrlVid, handleUrlProfile}) {
       }
     }
     if (fileupload !== undefined) {
-      fetch('http://localhost:3001/api/v1/upload_images_product', {
+      fetch('https://sdvanbao17.id.vn/api/v1/upload_images_product', {
         method: 'POST',
         body: fileupload,
       })
