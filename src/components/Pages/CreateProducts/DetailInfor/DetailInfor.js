@@ -67,7 +67,7 @@ function DetailInfor({madm1, submitData}) {
       .catch((err) => {
         if (err) throw err;
       });
-  }, []);
+  }, [madm1]);
 
   useEffect(() => {
     fetch('https://sdvanbao17.id.vn/api/v1/getAllAttributeValues')
@@ -76,7 +76,7 @@ function DetailInfor({madm1, submitData}) {
       .catch((err) => {
         if (err) throw err;
       });
-  }, [dataAttribute]);
+  }, []);
   const handleChoseData = (item) => {
     const data = datachose.filter(
       (it) => it.value.attribute_value_id == item.value.attribute_value_id,
@@ -120,39 +120,41 @@ function DetailInfor({madm1, submitData}) {
     <div className={cx('wrapperDetailInfor')}>
       <div className={cx('title')}>Thông tin chi tiết</div>
       {dataAttribute.map((item, index) => {
-        const data = dataAttributeValues.filter(
-          (it) => item.attribute_id == it.attribute_id,
-        );
-        return (
-          <>
-            <InputContainer
-              key={index}
-              text={item.attribute_name}
-              important={true}
-            >
-              {item.type === 'dropbox' ? (
-                <DetailInforInput
-                  idAttribute={item.attribute_id}
-                  listDataChose={datachose}
-                  onDeleteData={handleDeleteData}
-                  onClick={handleChoseData}
-                  dataChose={data}
-                  keyText={item.attribute_name}
-                  onSelectDropBox={handleDataFinal}
-                />
-              ) : (
-                <div className={cx('wrapperInput')}>
-                  <InputForm
+        if (dataAttributeValues.length > 0) {
+          const data = dataAttributeValues.filter(
+            (it) => item.attribute_id == it.attribute_id,
+          );
+          return (
+            <>
+              <InputContainer
+                key={index}
+                text={item.attribute_name}
+                important={true}
+              >
+                {item.type === 'dropbox' ? (
+                  <DetailInforInput
+                    idAttribute={item.attribute_id}
+                    listDataChose={datachose}
+                    onDeleteData={handleDeleteData}
+                    onClick={handleChoseData}
+                    dataChose={data}
                     keyText={item.attribute_name}
                     onSelectDropBox={handleDataFinal}
-                    classname={cx('tag')}
-                    tippyData={data}
-                  ></InputForm>
-                </div>
-              )}
-            </InputContainer>
-          </>
-        );
+                  />
+                ) : (
+                  <div className={cx('wrapperInput')}>
+                    <InputForm
+                      keyText={item.attribute_name}
+                      onSelectDropBox={handleDataFinal}
+                      classname={cx('tag')}
+                      tippyData={data}
+                    ></InputForm>
+                  </div>
+                )}
+              </InputContainer>
+            </>
+          );
+        }
       })}
       <InputContainer
         text={

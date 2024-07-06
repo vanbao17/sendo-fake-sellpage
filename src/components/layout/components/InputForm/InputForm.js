@@ -36,6 +36,7 @@ function InputForm({
   const [showTippy, setshowTippy] = useState(false);
   const [valueDropbox, setvalueDropbox] = useState(
     // item.value !== undefined ? item.value : item,
+
     tippyData !== undefined
       ? tippyData[0].value !== undefined
         ? tippyData[0].value
