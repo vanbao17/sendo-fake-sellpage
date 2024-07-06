@@ -76,7 +76,7 @@ function DetailInfor({madm1, submitData}) {
       .catch((err) => {
         if (err) throw err;
       });
-  }, []);
+  }, [dataAttribute]);
   const handleChoseData = (item) => {
     const data = datachose.filter(
       (it) => it.value.attribute_value_id == item.value.attribute_value_id,
