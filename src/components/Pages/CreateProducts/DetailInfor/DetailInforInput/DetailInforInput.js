@@ -23,6 +23,7 @@ function DetailInforInput({
     setdataListChose([...listDataChose]);
   }, [listDataChose]);
   const handleSendData = (item) => {
+    console.log({key: keyText, value: item});
     onClick({key: keyText, value: item});
     onSelectDropBox({key: keyText, value: item});
   };
@@ -42,6 +43,7 @@ function DetailInforInput({
       set_list_data_chose(dataChose);
     }
   };
+
   return (
     <div className={cx('wrapperInputDetail')}>
       <div className={cx('container')}>

@@ -290,7 +290,6 @@ function BasicInfor({submitData}) {
               placeholder={'Số lượng'}
               onHandleBasicInfor={handleDataFinal}
               keyText="quanlity"
-              value={100}
             />
           </InputContainer>
           <InputContainer text={'Khối lượng'} className={'formNormal'}>

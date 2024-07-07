@@ -73,7 +73,7 @@ function InputForm({
                       <li
                         key={index}
                         onClick={() => {
-                          handleSelected(item.attribute_id);
+                          handleSelected(item.attribute_value_id);
                           setvalueDropbox(
                             item.value !== undefined ? item.value : item,
                           );

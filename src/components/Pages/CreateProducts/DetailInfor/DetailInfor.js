@@ -16,7 +16,7 @@ function DetailInfor({madm1, submitData}) {
     data: [],
   });
   const [finalData, setfinalData] = useState({
-    'Phương thức vận chuyển': '',
+    'Phương thức vận chuyển': null,
     'Loại shop': null,
     'Ưu đãi': null,
     'Phong cách': null,
@@ -38,7 +38,7 @@ function DetailInfor({madm1, submitData}) {
   }, [finalData]);
   useEffect(() => {
     submitData(allValues);
-  }, [finalData]);
+  }, [allValues]);
   const handleDataFinal = (data) => {
     const updatedFinalData = {...finalData};
     if (Array.isArray(finalData[data.key])) {
@@ -56,6 +56,7 @@ function DetailInfor({madm1, submitData}) {
     } else {
       updatedFinalData[data.key] = data.value;
     }
+
     setfinalData(updatedFinalData);
   };
   const refInputName = useRef(null);
