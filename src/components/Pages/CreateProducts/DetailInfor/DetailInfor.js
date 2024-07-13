@@ -31,6 +31,7 @@ function DetailInfor({madm1, submitData}) {
     'Đánh giá': null,
     'Màu sắc': [],
   });
+  console.log(dataAttribute);
   const [allValues, setAllValues] = useState([]);
   useEffect(() => {
     const values = Object.values(finalData);

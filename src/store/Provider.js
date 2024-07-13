@@ -7,6 +7,7 @@ function Provider({children}) {
   const [listCate, setlistCate] = useState(false);
   const [chosseCate, setchosseCate] = useState([]);
   const [phoneUser, setphoneUser] = useState('');
+  const [chatBox, setchatBox] = useState(false);
   useEffect(() => {
     const fixedMenu = () => {
       if (document.documentElement.scrollTop > 50) {
@@ -35,6 +36,8 @@ function Provider({children}) {
         setchosseCate,
         phoneUser,
         setphoneUser,
+        chatBox,
+        setchatBox,
       }}
     >
       {children}

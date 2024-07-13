@@ -7,6 +7,7 @@ import CreateInforShop from './components/Pages/CreateInforShop/CreateInforShop'
 import publicRoutes from './routes/Routes';
 import {Fragment} from 'react';
 import Popup from './components/layout/components/Popup/Popup';
+import BtnChat from './components/layout/components/BtnChat/BtnChat';
 function App() {
   return (
     <Router>
@@ -39,6 +40,7 @@ function App() {
             );
           })}
         </Routes>
+        <BtnChat />
       </div>
     </Router>
   );
