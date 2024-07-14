@@ -93,7 +93,7 @@ function BtnChat() {
           console.log(err);
         });
     }
-  }, []);
+  }, [chatBox]);
   const sendMessage = () => {
     const userId = shop.idShop;
     if (idconvention != null) {
