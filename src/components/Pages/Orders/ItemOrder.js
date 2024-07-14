@@ -96,6 +96,24 @@ function ItemOrder({data}) {
         console.log(err);
       });
   };
+  const handleDeleteOrder = () => {
+    const order_id = data.id;
+    fetch('https://sdvanbao17.id.vn/api/v1/deleteOrder', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({order_id}),
+    })
+      .then((rs) => {
+        if (rs.status == 200) {
+          window.location.href = '/don-hang';
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className={cx('item_order')}>
@@ -171,7 +189,11 @@ function ItemOrder({data}) {
                 >
                   <span>Còn hàng</span>
                 </button>
-                <button>
+                <button
+                  onClick={() => {
+                    handleDeleteOrder();
+                  }}
+                >
                   <span>Hủy</span>
                 </button>
                 <button>

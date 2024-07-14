@@ -232,16 +232,16 @@ function Orders() {
               <div className={cx('imageNonePd')}>
                 <img src="https://media3.scdn.vn/img4/2020/07_03/qFi8EAsMzCHKBzY5kDsz.png"></img>
               </div>
-              <p>Không có sản phẩm</p>
-              <span>Bạn không có sản phẩm nào.</span>
-              <Link
+              <p>Không có đơn hàng nào cả</p>
+              <span>Bạn không có đơn hàng nào.</span>
+              {/* <Link
                 onClick={() => {
                   sethidemenu(!hidemenu);
                 }}
                 to={'/san-pham/dang-san-pham'}
               >
                 Thêm sản phẩm
-              </Link>
+              </Link> */}
             </div>
           )}
         </div>
