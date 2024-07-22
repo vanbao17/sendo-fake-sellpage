@@ -31,7 +31,6 @@ function DetailInfor({madm1, submitData}) {
     'Đánh giá': null,
     'Màu sắc': [],
   });
-  console.log(dataAttribute);
   const [allValues, setAllValues] = useState([]);
   useEffect(() => {
     const values = Object.values(finalData);
@@ -70,7 +69,6 @@ function DetailInfor({madm1, submitData}) {
         if (err) throw err;
       });
   }, [madm1]);
-
   useEffect(() => {
     fetch('https://sdvanbao17.id.vn/api/v1/getAllAttributeValues')
       .then((response) => response.json())
@@ -149,7 +147,7 @@ function DetailInfor({madm1, submitData}) {
                       keyText={item.attribute_name}
                       onSelectDropBox={handleDataFinal}
                       classname={cx('tag')}
-                      tippyData={data}
+                      tippyData={data.length != 0 ? data : [1]}
                     ></InputForm>
                   </div>
                 )}

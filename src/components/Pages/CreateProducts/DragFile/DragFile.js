@@ -3,18 +3,47 @@ import styles from './DragFile.module.scss';
 import Popup from '../../../layout/components/Popup/Popup';
 import {CameraIcon, CloseIcon} from '../../../Icons';
 import {useRef, useState} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faClose} from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(styles);
-function DragFile({state, title, handleUrl, handleUrlVid, handleUrlProfile}) {
+function DragFile({
+  state,
+  title,
+  handleUrl,
+  handleUrlVid,
+  handleUrlProfile,
+  multiple = false,
+  handleFile,
+}) {
   const [dragging, setDragging] = useState(false);
   const [fileupload, setfileUpload] = useState();
   const [filename, setfilename] = useState();
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
+  const [file, setfile] = useState([]);
   const fileInputRef = useRef(null);
   const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    setfilename(file.name);
-    const formData = new FormData();
-    formData.append('file', file);
-    setfileUpload(formData);
+    if (multiple == false) {
+      const file = event.target.files[0];
+      setfile(file);
+      setfilename(file.name);
+      const formData = new FormData();
+      formData.append('file', file);
+      setfileUpload(formData);
+      setPreviewImages([URL.createObjectURL(file)]);
+    } else {
+      const files = Array.from(event.target.files);
+      setfile(files);
+      setSelectedImages(files);
+      const formData = new FormData();
+      files.forEach((image) => {
+        formData.append('images', image);
+      });
+      setfilename(files.map((i) => i.name));
+      setfileUpload(formData);
+      const previewUrls = files.map((file) => URL.createObjectURL(file));
+      setPreviewImages(previewUrls);
+    }
   };
   const handleClose = () => {
     state(false);
@@ -32,17 +61,31 @@ function DragFile({state, title, handleUrl, handleUrlVid, handleUrlProfile}) {
       }
     }
     if (fileupload !== undefined) {
-      fetch('https://sdvanbao17.id.vn/api/v1/upload_images_product', {
-        method: 'POST',
-        body: fileupload,
-      })
-        .then((response) => {
-          console.log('File uploaded successfully');
-          handleClose();
+      if (multiple == false) {
+        fetch('https://sdvanbao17.id.vn/api/v1/upload_images_product', {
+          method: 'POST',
+          body: fileupload,
         })
-        .catch((error) => {
-          console.error('Error uploading file:', error);
-        });
+          .then((response) => {
+            console.log('File uploaded successfully');
+            handleClose();
+          })
+          .catch((error) => {
+            console.error('Error uploading file:', error);
+          });
+      } else {
+        fetch('https://sdvanbao17.id.vn/api/v1/upload_images_product_parent', {
+          method: 'POST',
+          body: fileupload,
+        })
+          .then((response) => {
+            console.log('File uploaded successfully');
+            handleClose();
+          })
+          .catch((error) => {
+            console.error('Error uploading file:', error);
+          });
+      }
     }
     handleClose();
   };
@@ -87,7 +130,12 @@ function DragFile({state, title, handleUrl, handleUrlVid, handleUrlProfile}) {
     setFileValue(fileInputRef, file);
     setDragging(false);
   };
-
+  const handleDeletePreview = (item, index) => {
+    const filter = previewImages.filter((i) => i != item);
+    const filterSelectedImage = fileupload.filter((_, id) => id != index);
+    setPreviewImages(filter);
+    setfileUpload(filterSelectedImage);
+  };
   return (
     <div className={cx('wrapper_drag_file')}>
       <Popup>
@@ -140,14 +188,39 @@ function DragFile({state, title, handleUrl, handleUrlVid, handleUrlProfile}) {
                       type="file"
                       onChange={handleFileUpload}
                       ref={fileInputRef}
+                      multiple={multiple}
                     ></input>
                   </div>
                 </div>
               </div>
               <div className={cx('list_file')}>
-                <div className={cx('item_image')}>
-                  <img src="https://media3.scdn.vn/img4/2023/10_20/EJqF295KwUZLAtlkSgng_simg_ab1f47_350x350_maxb.jpg"></img>
-                </div>
+                {previewImages.length != 0 ? (
+                  previewImages.map((src, index) => {
+                    return (
+                      <div className={cx('item_image')}>
+                        <img
+                          key={index}
+                          src={src}
+                          alt={`Preview ${index}`}
+                          style={{width: '100px', margin: '10px'}}
+                        />
+                        <div
+                          className={cx('icon_container')}
+                          onClick={() => {
+                            handleDeletePreview(src, index);
+                          }}
+                        >
+                          <FontAwesomeIcon
+                            icon={faClose}
+                            className={cx('icon')}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
               </div>
               <div className={cx('action_btn')}>
                 <span>
@@ -158,7 +231,6 @@ function DragFile({state, title, handleUrl, handleUrlVid, handleUrlProfile}) {
                   <button onClick={handleClose}>
                     <span>Thoát</span>
                   </button>
-
                   <span onClick={handleClickUpload}>
                     Thêm {title !== 'video' ? 'ảnh' : 'video'}
                   </span>

@@ -18,7 +18,6 @@ import {faCheck, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import {useContext, useEffect, useState} from 'react';
 import {Context} from '../../../store/Context';
 import DetailInfor from './DetailInfor/DetailInfor';
-import DragFile from './DragFile/DragFile';
 const cx = classNames.bind(styles);
 
 function CreateProducts() {
@@ -113,7 +112,6 @@ function CreateProducts() {
       },
       body: JSON.stringify({idProduct, dataDetail}),
     };
-
     try {
       const response = await fetch(
         'https://sdvanbao17.id.vn/api/v1/createAttrProduct',

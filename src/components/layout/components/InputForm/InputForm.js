@@ -104,7 +104,7 @@ function InputForm({
                 className={cx(
                   'cbb',
                   showTippy == true ? 'shadowBox' : '',
-                  icon !== null ? 'text-indent' : '',
+                  icon != null ? 'text-indent' : '',
                 )}
               >
                 {valueDropbox}

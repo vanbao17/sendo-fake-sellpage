@@ -76,6 +76,9 @@ function BasicInfor({submitData}) {
     <div className={cx('wrapperBasicInfor')}>
       {stateDragFileImageProfile == true ? (
         <DragFile
+          handleFile={(files) => {
+            console.log(files);
+          }}
           handleUrlProfile={handleDataFinal}
           state={() => {
             setstateDragFileImageProfile(false);
@@ -87,9 +90,13 @@ function BasicInfor({submitData}) {
       )}{' '}
       {stateDragFileImage == true ? (
         <DragFile
+          handleFile={(files) => {
+            console.log(files);
+          }}
           handleUrl={handleDataFinal}
           state={handleStateImage}
           title={'image'}
+          multiple={true}
         />
       ) : (
         <></>
