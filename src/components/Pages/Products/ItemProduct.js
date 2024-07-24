@@ -17,7 +17,7 @@ function ItemProduct({data, onHandleAddProdDelete, dataDelete}) {
   };
   useEffect(() => {
     if (statePopup == true) {
-      fetch('https:sdvanbao17.id.vn/api/v1/detail/' + data.idProduct)
+      fetch('https://sdvanbao17.id.vn/api/v1/detail/' + data.idProduct)
         .then((rs) => rs.json())
         .then((dt) => {
           const dataDetail = dt[0];
