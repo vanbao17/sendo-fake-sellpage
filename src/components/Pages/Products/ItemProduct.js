@@ -46,7 +46,7 @@ function ItemProduct({data, onHandleAddProdDelete, dataDelete}) {
       QuanlityExists,
       dateEnd,
     } = dataUpdate;
-    fetch('https:sdvanbao17.id.vn/api/v1/updateProduct', {
+    fetch('https://sdvanbao17.id.vn/api/v1/updateProduct', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

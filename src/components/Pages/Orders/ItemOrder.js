@@ -76,9 +76,9 @@ function ItemOrder({data}) {
     }
     return '';
   };
-  const fetchUpdateState = () => {
+  const fetchUpdateState = (id) => {
     const order_id = data.id;
-    const state = data.state + 1;
+    const state = id;
     fetch('https://sdvanbao17.id.vn/api/v1/updateStateOrder', {
       method: 'POST',
       headers: {
@@ -184,7 +184,7 @@ function ItemOrder({data}) {
                 </button>
                 <button
                   onClick={() => {
-                    fetchUpdateState();
+                    fetchUpdateState(data.state + 1);
                   }}
                 >
                   <span>Còn hàng</span>
@@ -199,10 +199,19 @@ function ItemOrder({data}) {
                 <button>
                   <span>Hoãn</span>
                 </button>
+
                 <button>
                   <span>Gọi xác nhận đơn hàng</span>
                 </button>
-                <button>
+                <button
+                  onClick={() => {
+                    fetchUpdateState(5);
+                  }}
+                  style={{backgroundColor: 'green', color: '#fff'}}
+                >
+                  <span>Hoàn tất đơn hàng</span>
+                </button>
+                <button style={{backgroundColor: 'green', color: '#fff'}}>
                   <span>In hóa đơn</span>
                 </button>
               </div>
