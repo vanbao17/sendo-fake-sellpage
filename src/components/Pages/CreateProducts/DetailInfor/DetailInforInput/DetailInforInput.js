@@ -75,6 +75,7 @@ function DetailInforInput({
                       }}
                     >
                       <input
+                        style={{width: 'fit-content'}}
                         checked={
                           dataListChose.filter(
                             (it) =>
