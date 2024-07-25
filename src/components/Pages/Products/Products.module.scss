@@ -262,3 +262,32 @@ input:hover {
 .small {
   text-indent: 1;
 }
+.actions_product {
+  padding: 6px;
+  cursor: pointer;
+}
+tr .list_action .actions_product {
+  width: fit-content;
+  position: relative;
+}
+tr .list_action .actions_product ul {
+  box-shadow:
+    0 -4px 16px 0 rgba(0, 0, 0, 0.1),
+    0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  width: 150px;
+  position: absolute;
+  top: 100%;
+  right: -50%;
+  background-color: #fff;
+  padding: 12px;
+  border-radius: 5px;
+  li {
+    width: 100%;
+    padding: 4px 0px;
+    transition: 0.25s;
+    border-radius: 5px;
+  }
+  li:hover {
+    background-color: #f2f3f4;
+  }
+}

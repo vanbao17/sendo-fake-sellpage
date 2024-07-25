@@ -1,0 +1,128 @@
+.wrapper {
+  height: 95vh;
+  padding: 12px;
+  .title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .title span {
+    font-style: 16px;
+    font-weight: 600;
+  }
+  .title .icon_close {
+    cursor: pointer;
+  }
+  .product {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .product .thumb_product {
+    width: 15%;
+    height: 100px;
+    margin-right: 20px;
+  }
+  .product .thumb_product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .product .infor_product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product .infor_product .name_product span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .product .infor_product .detail_product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+  }
+  .price_product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .price_product span:nth-child(2) {
+    font-size: 14px;
+    color: #aaa;
+    font-style: italic;
+    text-decoration: line-through;
+  }
+  .price_product span:nth-child(1) {
+    font-size: 16px;
+    color: red;
+    font-weight: 600;
+  }
+}
+.filter_star {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .item_filter {
+    border-radius: 5px;
+    background-color: #f2f3f4;
+    padding: 6px 0px;
+    cursor: pointer;
+    transition: 0.25s;
+    border: 2px solid transparent;
+  }
+  .item_filter.active {
+    border: 2px solid red;
+    background-color: #fff;
+  }
+  .item_filter span {
+    padding: 0px 12px;
+  }
+  margin-bottom: 24px;
+}
+.blue_text {
+  color: blue;
+}
+.empty_comment {
+  width: 100%;
+  text-align: center;
+  img {
+    width: 30%;
+    height: auto;
+  }
+  p {
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+}
+.list_comments {
+  width: 100%;
+  height: 65%;
+  overflow-y: scroll;
+  position: relative;
+}
+.container_input_rep {
+  width: 95%;
+  position: absolute;
+  transition: 0.25;
+  .icon_plane {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px;
+    cursor: pointer;
+  }
+}
+.container_input_rep.active {
+  bottom: 20px;
+}
+.container_input_rep.nonactive {
+  bottom: -100%;
+}
+.container_input_rep div {
+  position: relative;
+}

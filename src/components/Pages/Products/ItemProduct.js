@@ -4,13 +4,20 @@ import Popup from '../../Popup/Popup';
 import InputForm from '../../layout/components/InputForm/InputForm';
 import {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faClose} from '@fortawesome/free-solid-svg-icons';
+import {
+  faClose,
+  faEllipsis,
+  faEllipsisV,
+} from '@fortawesome/free-solid-svg-icons';
 import {format} from 'date-fns';
 import DatePicker from 'react-datepicker';
+import ProductComments from '../../layout/components/ProductComments/ProductComments';
 const cx = classNames.bind(styles);
 function ItemProduct({data, onHandleAddProdDelete, dataDelete}) {
   const check = dataDelete.filter((item) => item == data.idProduct);
   const [statePopup, setStatePopup] = useState(false);
+  const [statePopupComments, setStatePopupComments] = useState(false);
+  const [state, setState] = useState(false);
   const [dataUpdate, setDataUpdate] = useState();
   const formatDate = (string) => {
     return format(new Date(string), 'dd-MM-yyyy');
@@ -104,15 +111,59 @@ function ItemProduct({data, onHandleAddProdDelete, dataDelete}) {
       <td>
         {data.status === '1' ? <span>Đã duyệt</span> : <span>Chưa duyệt</span>}
       </td>
-      <td>
-        <button
+      <td className={cx('list_action')}>
+        <div className={cx('actions_product')}>
+          <FontAwesomeIcon
+            icon={faEllipsisV}
+            onClick={() => {
+              setState(!state);
+            }}
+          />
+          {state == true ? (
+            <ul className={cx('drop_down_action')}>
+              <li
+                onClick={() => {
+                  setStatePopup(!statePopup);
+                  setState(!state);
+                }}
+              >
+                <span>Sửa</span>
+              </li>
+              <li
+                onClick={() => {
+                  setStatePopupComments(!statePopupComments);
+                  setState(!state);
+                }}
+              >
+                <span>Xem đánh giá</span>
+              </li>
+            </ul>
+          ) : (
+            <></>
+          )}
+        </div>
+
+        {/* <button
           onClick={() => {
             setStatePopup(!statePopup);
           }}
         >
           <span>Sửa</span>
-        </button>
+        </button> */}
       </td>
+      {statePopupComments == true ? (
+        <Popup width="50%">
+          <ProductComments
+            idProduct={data.idProduct}
+            product={data}
+            handleClose={(data) => {
+              setStatePopupComments(data);
+            }}
+          />
+        </Popup>
+      ) : (
+        <></>
+      )}
       {statePopup == true ? (
         <Popup width="90%">
           <div className={cx('wrapper_popup_update')}>
